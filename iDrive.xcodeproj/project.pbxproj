@@ -18,6 +18,8 @@
 		9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FE9C2B34B68600D5B370 /* HomeViewModel.swift */; };
 		9958FEA02B34B6F900D5B370 /* UiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FE9F2B34B6F900D5B370 /* UiState.swift */; };
 		9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA12B34B74D00D5B370 /* DVError.swift */; };
+		9958FEA52B34C0C100D5B370 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA42B34C0C100D5B370 /* Array.swift */; };
+		9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		9958FE9C2B34B68600D5B370 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		9958FE9F2B34B6F900D5B370 /* UiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiState.swift; sourceTree = "<group>"; };
 		9958FEA12B34B74D00D5B370 /* DVError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVError.swift; sourceTree = "<group>"; };
+		9958FEA42B34C0C100D5B370 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 		9958FE8F2B348D6400D5B370 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9958FEA32B34C0AB00D5B370 /* MapKit */,
 				9958FE942B348F7B00D5B370 /* Foundation */,
 			);
 			path = Extensions;
@@ -117,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				9958FE962B348FA600D5B370 /* Double.swift */,
+				9958FEA42B34C0C100D5B370 /* Array.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				9958FE9B2B34B67600D5B370 /* Home */,
+				9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +151,13 @@
 				9958FE9F2B34B6F900D5B370 /* UiState.swift */,
 			);
 			path = UiState;
+			sourceTree = "<group>";
+		};
+		9958FEA32B34C0AB00D5B370 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,7 +231,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */,
+				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
+				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
 				9958FE912B348D7800D5B370 /* Car.swift in Sources */,
