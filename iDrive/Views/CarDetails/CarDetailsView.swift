@@ -56,9 +56,8 @@ struct CarDetailsView: View {
         }
         .padding(.top, 68)
         .padding()
-        .background(Color.blue)
+        .background(.ultraThickMaterial)
         .clipShape(.rect(cornerRadius: 16))
-        .foregroundStyle(.white)
         .overlay(alignment: .top) {
             Image(car.imageUrl)
                 .resizable()
@@ -81,7 +80,6 @@ struct CarDetailsView: View {
                         .font(.system(size: 18, weight: .regular))
                 }
             }
-            .foregroundStyle(.white)
             Spacer()
             
             Image(owner.profileImageUrl)
@@ -90,7 +88,7 @@ struct CarDetailsView: View {
                 .clipShape(.circle)
         }
         .padding()
-        .background(Color.blue)
+        .background(.ultraThickMaterial)
         .clipShape(.rect(cornerRadius: 16))
     }
     
@@ -104,7 +102,6 @@ struct CarDetailsView: View {
                     .font(.system(size: 16, weight: .regular))
                     .opacity(0.8)
             }
-            .foregroundStyle(.white)
             Spacer()
             
             Button {
@@ -114,13 +111,13 @@ struct CarDetailsView: View {
                     .font(.system(size: 18, weight: .bold))
                     .padding()
                     .padding(.horizontal)
-                    .background(.ultraThickMaterial)
+                    .background(.ultraThinMaterial)
                     .clipShape(.capsule)
             }
             .buttonStyle(PlainButtonStyle())
         }
         .padding()
-        .background(Color.blue)
+        .background(.ultraThickMaterial)
         .clipShape(.rect(cornerRadius: 16))
     }
     
