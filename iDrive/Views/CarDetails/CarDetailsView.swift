@@ -29,8 +29,8 @@ struct CarDetailsView: View {
         VStack(alignment: .leading, spacing: 16){
             VStack(alignment: .leading){
                 HStack{
-                    Text(car.make + " - " + car.model)
-                        .font(.system(size: 24, weight: .bold))
+                    Text(car.make)
+                        .font(.system(size: 18, weight: .regular))
                     Spacer()
                     
                     HStack{
@@ -39,8 +39,8 @@ struct CarDetailsView: View {
                             .font(.system(size: 16, weight: .bold))
                     }
                 }
-                Text(String(car.year))
-                    .font(.system(size: 16, weight: .regular))
+                Text(car.model + " " + String(car.year))
+                    .font(.system(size: 24, weight: .bold))
             }
             
             label(image: "fuelpump.fill", label: "Fuel level", value: "\(car.fuelLevel)Km")
