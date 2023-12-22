@@ -28,6 +28,8 @@
 		9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB92B35D98F00D5B370 /* CarStatus.swift */; };
 		99D761E22B361ABC00695854 /* Transmission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E12B361ABC00695854 /* Transmission.swift */; };
 		99D761E42B361B0300695854 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E32B361B0300695854 /* Engine.swift */; };
+		99D761E62B3627FF00695854 /* BookingUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E52B3627FF00695854 /* BookingUiState.swift */; };
+		99D761E82B363A1A00695854 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E72B363A1A00695854 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		9958FEB92B35D98F00D5B370 /* CarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStatus.swift; sourceTree = "<group>"; };
 		99D761E12B361ABC00695854 /* Transmission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transmission.swift; sourceTree = "<group>"; };
 		99D761E32B361B0300695854 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		99D761E52B3627FF00695854 /* BookingUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUiState.swift; sourceTree = "<group>"; };
+		99D761E72B363A1A00695854 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 				9958FEB92B35D98F00D5B370 /* CarStatus.swift */,
 				99D761E12B361ABC00695854 /* Transmission.swift */,
 				99D761E32B361B0300695854 /* Engine.swift */,
+				99D761E72B363A1A00695854 /* Package.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			children = (
 				9958FE9B2B34B67600D5B370 /* Home */,
 				9958FEB02B35923500D5B370 /* CarDetails */,
+				99D761E52B3627FF00695854 /* BookingUiState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 				9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */,
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */,
+				99D761E82B363A1A00695854 /* Package.swift in Sources */,
 				99D761E22B361ABC00695854 /* Transmission.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
@@ -291,6 +298,7 @@
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,
 				9958FEA02B34B6F900D5B370 /* UiState.swift in Sources */,
+				99D761E62B3627FF00695854 /* BookingUiState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
