@@ -11,6 +11,8 @@ import CoreLocation
 struct CarCard: View {
     let car: Car
     
+    @StateObject private var locationManager = LocationManager.shared
+    
     init(_ car: Car) {
         self.car = car
     }
@@ -33,11 +35,21 @@ struct CarCard: View {
             
             Spacer()
             
-            HStack{
-                Image(systemName: "star.fill")
-                    .frame(width: 18, height: 18)
-                Text(car.rating.toString)
-                    .font(.system(size: 16, weight: .medium))
+            VStack{
+                HStack{
+                    Image(systemName: "star.fill")
+                        .frame(width: 18, height: 18)
+                    Text(car.rating.toString)
+                        .font(.system(size: 16, weight: .medium))
+                }
+                if let userLocation = locationManager.location {
+                    HStack{
+                        Image("location.fill")
+                            .frame(width: 18, height: 18)
+                        Text(car.distance(userLocation: userLocation).toString + "m")
+                            .font(.system(size: 16, weight: .medium))
+                    }
+                }
             }
         }
         .padding()

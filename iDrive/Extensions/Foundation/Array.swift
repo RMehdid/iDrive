@@ -10,6 +10,6 @@ import _MapKit_SwiftUI
 
 extension Array where Element == Car {
     var markers: [MapMarker] {
-        return self.map { MapMarker(coordinate: $0.coordinatesLocation.coordinate)}
+        return self.map { MapMarker(coordinate: $0.location.coordinate)}
     }
 }

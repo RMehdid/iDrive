@@ -10,6 +10,7 @@ import MapKit
 
 struct HomeView: View {
     
+    @StateObject private var locationManager = LocationManager.shared
     @StateObject private var viewModel = ViewModel()
     
     @State private var searchText: String = ""
@@ -17,13 +18,16 @@ struct HomeView: View {
     @State private var selectedCar: Car? = nil
     
     var body: some View {
-        Map {
-//            if case .success(let nearbyCars) = viewModel.nearbyCarsUiState {
-//                nearbyCars.map { Marker($0.name, coordinate: $0.coordinatesLocation.coordinate)}
-//            } else {
-//                Marker("", coordinate: CLLocationCoordinate2D(382.232, 232.232))
-//            }
+        Map(initialPosition: .region(locationManager.region)) {
+            ForEach(Car.sampleCars) { car in
+                Annotation(car.id, coordinate: car.location.coordinate) {
+                    Image("ic_car")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                }
+            }
         }
+        
         .overlay(alignment: .top){
             Rectangle()
                 .fill(.ultraThinMaterial)

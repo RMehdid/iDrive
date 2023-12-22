@@ -24,6 +24,8 @@
 		9958FEAD2B35919C00D5B370 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAC2B35919C00D5B370 /* Client.swift */; };
 		9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAE2B3591D400D5B370 /* Owner.swift */; };
 		9958FEB22B359A4400D5B370 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB12B359A4400D5B370 /* Engine.swift */; };
+		9958FEB82B35D3B100D5B370 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB72B35D3B100D5B370 /* LocationManager.swift */; };
+		9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB92B35D98F00D5B370 /* CarStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,9 @@
 		9958FEAC2B35919C00D5B370 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		9958FEAE2B3591D400D5B370 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		9958FEB12B359A4400D5B370 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		9958FEB62B35C7E100D5B370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9958FEB72B35D3B100D5B370 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9958FEB92B35D98F00D5B370 /* CarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +83,8 @@
 		9958FE7D2B338C4C00D5B370 /* iDrive */ = {
 			isa = PBXGroup;
 			children = (
+				9958FEB62B35C7E100D5B370 /* Info.plist */,
+				9958FEB32B35C08700D5B370 /* Managers */,
 				9958FE9E2B34B6ED00D5B370 /* UiState */,
 				9958FE9A2B34B66D00D5B370 /* Views */,
 				9958FE8F2B348D6400D5B370 /* Extensions */,
@@ -109,6 +116,7 @@
 				9958FEAC2B35919C00D5B370 /* Client.swift */,
 				9958FEAE2B3591D400D5B370 /* Owner.swift */,
 				9958FEB12B359A4400D5B370 /* Engine.swift */,
+				9958FEB92B35D98F00D5B370 /* CarStatus.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +186,14 @@
 				9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */,
 			);
 			path = CarDetails;
+			sourceTree = "<group>";
+		};
+		9958FEB32B35C08700D5B370 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9958FEB72B35D3B100D5B370 /* LocationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +268,10 @@
 			files = (
 				9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */,
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
+				9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
+				9958FEB82B35D3B100D5B370 /* LocationManager.swift in Sources */,
 				9958FEB22B359A4400D5B370 /* Engine.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
@@ -398,6 +416,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iDrive/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "iDrive is requesting your location to show you the nearest cars for you";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -436,6 +456,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iDrive/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "iDrive is requesting your location to show you the nearest cars for you";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
