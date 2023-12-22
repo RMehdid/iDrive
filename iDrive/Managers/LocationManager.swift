@@ -12,8 +12,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     static let shared = LocationManager()
     
-    @Published var location: CLLocation?
-    @Published var region = MKCoordinateRegion()
+    @Published private(set) var location: CLLocation?
+    @Published private(set) var status: CLAuthorizationStatus?
     
     private let manager = CLLocationManager()
     
@@ -24,13 +24,32 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         manager.startUpdatingLocation()
     }
     
+    func requestLocation() {
+        manager.requestAlwaysAuthorization()
+    }
+    
+    public func setBackgroundModeOnOff(_ value: Bool){
+        manager.allowsBackgroundLocationUpdates = value
+        manager.showsBackgroundLocationIndicator = value
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations.last
-        locations.last.map {
-            region = MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude),
-                span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-            )
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        self.status = status
+        switch status {
+        case .notDetermined:
+            print("not determined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("location should be shown")
+        default:
+            break
         }
     }
 }

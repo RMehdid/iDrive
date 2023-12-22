@@ -15,4 +15,15 @@ extension Double {
             return String(format: "%.0f", self)
         }
     }
+    
+    var formatDistance: String {
+        let distanceInMeters = self
+        
+        if distanceInMeters >= 1000 {
+            let distanceInKilometers = distanceInMeters / 1000
+            return String(format: "%.2f km", distanceInKilometers)
+        } else {
+            return String(format: "%.0f meters", distanceInMeters)
+        }
+    }
 }

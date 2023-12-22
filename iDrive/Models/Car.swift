@@ -22,6 +22,7 @@ struct Car: Decodable, Identifiable {
     let rating: Double
     let color: String
     let isFreeCancellation: Bool
+    let priceEstimationPerHour: Int
     
     var location: CLLocation {
         return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
@@ -39,13 +40,14 @@ struct Car: Decodable, Identifiable {
             id: "SEATIBIZA1",
             year: 2019,
             fuelLevel: 70,
-            coordinates: Coordinates(latitude: 37.7749, longitude: -122.4194),
+            coordinates: Coordinates(latitude: 36.726504, longitude: 3.044932),
             imageUrl: "ibiza",
             ownerId: "Owner123",
             status: .available,
             rating: 4.5,
             color: "White",
-            isFreeCancellation: true
+            isFreeCancellation: true,
+            priceEstimationPerHour: 500
         ),
         Car(
             make: "Audi",
@@ -54,13 +56,14 @@ struct Car: Decodable, Identifiable {
             id: "AUDIQ71",
             year: 2017,
             fuelLevel: 450,
-            coordinates: Coordinates(latitude: 37.7749, longitude: -122.4194),
+            coordinates: Coordinates(latitude: 36.768274, longitude: 3.056715),
             imageUrl: "q7",
             ownerId: "Owner123",
             status: .outOfService,
             rating: 4.7,
             color: "White",
-            isFreeCancellation: true
+            isFreeCancellation: true,
+            priceEstimationPerHour: 1000
         ),
         Car(
             make: "Chevrolet",
@@ -69,43 +72,46 @@ struct Car: Decodable, Identifiable {
             id: "CHEVROLETAVEO1",
             year: 2012,
             fuelLevel: 30,
-            coordinates: Coordinates(latitude: 37.7749, longitude: -122.4194),
+            coordinates: Coordinates(latitude: 36.793492, longitude: 3.053600),
             imageUrl: "aveo",
             ownerId: "Owner123",
             status: .lowFuel,
             rating: 3.9,
             color: "White",
-            isFreeCancellation: false
+            isFreeCancellation: false,
+            priceEstimationPerHour: 350
         ),
         Car(
             make: "Seat",
             model: "Ibiza",
             engine: .petrol(hp: 110),
-            id: "ABC123",
+            id: "SEATIBIZA2",
             year: 2019,
             fuelLevel: 70,
-            coordinates: Coordinates(latitude: 37.7749, longitude: -122.4194),
+            coordinates: Coordinates(latitude: 36.717847, longitude: 3.111403),
+            imageUrl: "ibiza",
+            ownerId: "Owner123",
+            status: .rented,
+            rating: 4.5,
+            color: "White",
+            isFreeCancellation: true,
+            priceEstimationPerHour: 500
+        ),
+        Car(
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
+            id: "SEATIBIZA3",
+            year: 2019,
+            fuelLevel: 70,
+            coordinates: Coordinates(latitude: 36.734001, longitude: 3.152378),
             imageUrl: "ibiza",
             ownerId: "Owner123",
             status: .rented,
             rating: 4.5,
             color: "White",
             isFreeCancellation: true
-        ),
-        Car(
-            make: "Seat",
-            model: "Ibiza",
-            engine: .petrol(hp: 110),
-            id: "ABC123",
-            year: 2019,
-            fuelLevel: 70,
-            coordinates: Coordinates(latitude: 37.7749, longitude: -122.4194),
-            imageUrl: "ibiza",
-            ownerId: "Owner123",
-            status: .rented,
-            rating: 4.5,
-            color: "White",
-            isFreeCancellation: true
+            ,priceEstimationPerHour: 500
         )
     ]
 }

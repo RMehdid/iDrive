@@ -12,6 +12,9 @@ struct iDriveApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .onAppear {
+                    LocationManager.shared.requestLocation()
+                }
         }
     }
 }

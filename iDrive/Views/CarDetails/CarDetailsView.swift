@@ -10,14 +10,18 @@ import SwiftUI
 struct CarDetailsView: View {
     let car: Car
     
+    @State private var isBooking: Bool = false
+    
     init(_ car: Car) {
         self.car = car
     }
     
     var body: some View {
-        carDetailsCard()
-        ownerDetails(.owner)
-        bookCard()
+        if !isBooking {
+            carDetailsCard()
+            ownerDetails(.owner)
+        }
+        bookCard(price: car.priceEstimationPerHour)
     }
     
     @ViewBuilder
@@ -93,32 +97,43 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func bookCard() -> some View {
-        HStack{
-            VStack(alignment: .leading){
-                Text("200$")
-                    .font(.system(size: 18, weight: .bold))
-                Text("Reserve your car")
-                    .font(.system(size: 16, weight: .regular))
-                    .opacity(0.8)
+    private func bookCard(price priceEstimation: Int) -> some View {
+        ZStack{
+            if isBooking {
+                bookingView()
+            } else {
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(String(priceEstimation) + "DA")
+                            .font(.system(size: 18, weight: .bold))
+                        Text("Price estimation")
+                            .font(.system(size: 16, weight: .regular))
+                            .opacity(0.8)
+                    }
+                    Spacer()
+                    
+                    Button {
+                        self.isBooking = true
+                    } label: {
+                        Text("Book now")
+                            .font(.system(size: 18, weight: .bold))
+                            .padding()
+                            .padding(.horizontal)
+                            .background(.ultraThinMaterial)
+                            .clipShape(.capsule)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
             }
-            Spacer()
-            
-            Button {
-                //
-            } label: {
-                Text("Book now")
-                    .font(.system(size: 18, weight: .bold))
-                    .padding()
-                    .padding(.horizontal)
-                    .background(.ultraThinMaterial)
-                    .clipShape(.capsule)
-            }
-            .buttonStyle(PlainButtonStyle())
         }
         .padding()
         .background(.ultraThickMaterial)
         .clipShape(.rect(cornerRadius: 16))
+    }
+    
+    @ViewBuilder
+    private func bookingView() -> some View {
+        
     }
     
     @ViewBuilder

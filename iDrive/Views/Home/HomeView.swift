@@ -17,66 +17,71 @@ struct HomeView: View {
     
     @State private var selectedCar: Car? = nil
     
+    @State private var position: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
+    
+    @Namespace private var locationSpace
+    
     var body: some View {
-        Map(initialPosition: .region(locationManager.region)) {
-            ForEach(Car.sampleCars) { car in
-                Annotation(car.id, coordinate: car.location.coordinate) {
-                    Image("ic_car")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
-            }
+        Map(position: $position) {
+            UserAnnotation()
+//            ForEach(Car.sampleCars) { car in
+//                Annotation(car.id, coordinate: car.location.coordinate) {
+//                    Image("ic_car")
+//                        .resizable()
+//                        .frame(width: 24, height: 24)
+//                }
+//            }
         }
-        
-        .overlay(alignment: .top){
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .frame(height: 56)
+        .mapStyle(.standard)
+        .mapControls {
+            MapUserLocationButton()
         }
-        .ignoresSafeArea()
         .sheet(isPresented: .constant(true)) {
-            VStack(spacing: 16) {
-                HStack(spacing: 16){
-                    searchBar()
-                    
-                    Circle()
-                        .fill(Color.gray)
-                        .frame(width: 42, height: 42)
-                }
-                
-                
-                ScrollView(.vertical, showsIndicators: false) {
-                    if !searchText.isEmpty, case .success(let searchedCars) = viewModel.searchCarsUiState {
-                        listBuilder(for: "Search results", with: searchedCars)
-                    } else {
-                        if case .success(let nearbyCars) = viewModel.nearbyCarsUiState {
-                            listBuilder(for: "Nearby cars", with: nearbyCars)
-                        }
+            GeometryReader { geometry in
+                VStack(spacing: 16) {
+                    HStack(spacing: 16){
+                        searchBar()
                         
+                        Circle()
+                            .fill(Color.gray)
+                            .frame(width: 42, height: 42)
+                    }
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
                         Spacer()
                             .frame(height: 32)
                         
-                        if case .success(let favoriteCars) = viewModel.favoritesCarsUiState {
-                            listBuilder(for: "Favorite cars", with: favoriteCars)
-                        }
-                        
-                        if case .success(let recentCars) = viewModel.recentCarsUiState {
-                            listBuilder(for: "Recent cars", with: recentCars)
+                        if !searchText.isEmpty, case .success(let searchedCars) = viewModel.searchCarsUiState {
+                            listBuilder(for: "Search results", with: searchedCars)
+                        } else {
+                            if case .success(let nearbyCars) = viewModel.nearbyCarsUiState {
+                                listBuilder(for: "Nearby cars", with: nearbyCars)
+                            }
+                            
+                            if case .success(let favoriteCars) = viewModel.favoritesCarsUiState {
+                                listBuilder(for: "Favorite cars", with: favoriteCars)
+                            }
+                            
+                            if case .success(let recentCars) = viewModel.recentCarsUiState {
+                                listBuilder(for: "Recent cars", with: recentCars)
+                            }
                         }
                     }
                 }
-            }
-            .padding()
-            .presentationDetents([.medium, .large, .height(96)])
-            .presentationBackground(.ultraThinMaterial)
-            .interactiveDismissDisabled()
-            .sheet(item: $selectedCar){ car in
-                VStack {
-                    Spacer()
-                    CarDetailsView(car)
-                }
-                .padding()
+                .padding(.horizontal)
+                .padding(.top)
+                .presentationDetents([.medium, .large, .height(geometry.safeAreaInsets.bottom + 32)])
+                .presentationBackgroundInteraction(.enabled)
                 .presentationBackground(.ultraThinMaterial)
+                .interactiveDismissDisabled()
+                .sheet(item: $selectedCar){ car in
+                    VStack {
+                        Spacer()
+                        CarDetailsView(car)
+                    }
+                    .padding()
+                    .presentationBackground(.ultraThinMaterial)
+                }
             }
         }
         .onAppear(perform: viewModel.getNearbyCars)
