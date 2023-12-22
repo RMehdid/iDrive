@@ -20,6 +20,10 @@
 		9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA12B34B74D00D5B370 /* DVError.swift */; };
 		9958FEA52B34C0C100D5B370 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA42B34C0C100D5B370 /* Array.swift */; };
 		9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */; };
+		9958FEAB2B3590E100D5B370 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAA2B3590E100D5B370 /* User.swift */; };
+		9958FEAD2B35919C00D5B370 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAC2B35919C00D5B370 /* Client.swift */; };
+		9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAE2B3591D400D5B370 /* Owner.swift */; };
+		9958FEB22B359A4400D5B370 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB12B359A4400D5B370 /* Engine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		9958FEA12B34B74D00D5B370 /* DVError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVError.swift; sourceTree = "<group>"; };
 		9958FEA42B34C0C100D5B370 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
+		9958FEAA2B3590E100D5B370 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9958FEAC2B35919C00D5B370 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		9958FEAE2B3591D400D5B370 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		9958FEB12B359A4400D5B370 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,10 @@
 				9958FE902B348D7800D5B370 /* Car.swift */,
 				9958FE922B348EE200D5B370 /* Coordinates.swift */,
 				9958FEA12B34B74D00D5B370 /* DVError.swift */,
+				9958FEAA2B3590E100D5B370 /* User.swift */,
+				9958FEAC2B35919C00D5B370 /* Client.swift */,
+				9958FEAE2B3591D400D5B370 /* Owner.swift */,
+				9958FEB12B359A4400D5B370 /* Engine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				9958FE9B2B34B67600D5B370 /* Home */,
-				9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */,
+				9958FEB02B35923500D5B370 /* CarDetails */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +170,14 @@
 			children = (
 			);
 			path = MapKit;
+			sourceTree = "<group>";
+		};
+		9958FEB02B35923500D5B370 /* CarDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */,
+			);
+			path = CarDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +254,14 @@
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
+				9958FEB22B359A4400D5B370 /* Engine.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
+				9958FEAD2B35919C00D5B370 /* Client.swift in Sources */,
 				9958FE912B348D7800D5B370 /* Car.swift in Sources */,
 				9958FE972B348FA600D5B370 /* Double.swift in Sources */,
+				9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */,
+				9958FEAB2B3590E100D5B370 /* User.swift in Sources */,
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,
 				9958FEA02B34B6F900D5B370 /* UiState.swift in Sources */,
@@ -384,7 +408,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.1;
@@ -422,7 +446,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.1;

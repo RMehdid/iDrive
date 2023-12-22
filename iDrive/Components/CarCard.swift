@@ -25,7 +25,7 @@ struct CarCard: View {
                 .background(.ultraThinMaterial)
                 .clipShape(.circle)
             VStack(alignment: .leading){
-                Text(car.name + " - " + car.color)
+                Text(car.model + " - " + car.color)
                     .font(.system(size: 16, weight: .semibold))
                 Text(String(car.year))
                     .font(.system(size: 16, weight: .regular))

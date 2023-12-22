@@ -9,7 +9,9 @@ import Foundation
 import CoreLocation
 
 struct Car: Decodable, Identifiable {
-    let name: String
+    let make: String
+    let model: String
+    let engine: Engine
     let id: String
     let year: Int
     let fuelLevel: Int
@@ -19,6 +21,7 @@ struct Car: Decodable, Identifiable {
     let status: String
     let rating: Double
     let color: String
+    let isFreeCancellation: Bool
     
     var coordinatesLocation: CLLocation {
         return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
@@ -30,7 +33,9 @@ struct Car: Decodable, Identifiable {
     
     static let sampleCars: [Car] = [
         Car(
-            name: "Ibiza",
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
             id: "ABC123",
             year: 2019,
             fuelLevel: 70,
@@ -39,10 +44,13 @@ struct Car: Decodable, Identifiable {
             ownerId: "Owner123",
             status: "Available",
             rating: 4.5,
-            color: "White"
+            color: "White",
+            isFreeCancellation: true
         ),
         Car(
-            name: "Ibiza",
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
             id: "ABC123",
             year: 2019,
             fuelLevel: 70,
@@ -51,10 +59,13 @@ struct Car: Decodable, Identifiable {
             ownerId: "Owner123",
             status: "Available",
             rating: 4.5,
-            color: "White"
+            color: "White",
+            isFreeCancellation: true
         ),
         Car(
-            name: "Ibiza",
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
             id: "ABC123",
             year: 2019,
             fuelLevel: 70,
@@ -63,10 +74,13 @@ struct Car: Decodable, Identifiable {
             ownerId: "Owner123",
             status: "Available",
             rating: 4.5,
-            color: "White"
+            color: "White",
+            isFreeCancellation: true
         ),
         Car(
-            name: "Ibiza",
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
             id: "ABC123",
             year: 2019,
             fuelLevel: 70,
@@ -75,10 +89,13 @@ struct Car: Decodable, Identifiable {
             ownerId: "Owner123",
             status: "Available",
             rating: 4.5,
-            color: "White"
+            color: "White",
+            isFreeCancellation: true
         ),
         Car(
-            name: "Ibiza",
+            make: "Seat",
+            model: "Ibiza",
+            engine: .petrol(hp: 110),
             id: "ABC123",
             year: 2019,
             fuelLevel: 70,
@@ -87,7 +104,8 @@ struct Car: Decodable, Identifiable {
             ownerId: "Owner123",
             status: "Available",
             rating: 4.5,
-            color: "White"
+            color: "White",
+            isFreeCancellation: true
         )
     ]
 }

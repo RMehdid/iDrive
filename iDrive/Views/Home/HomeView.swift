@@ -14,6 +14,8 @@ struct HomeView: View {
     
     @State private var searchText: String = ""
     
+    @State private var selectedCar: Car? = nil
+    
     var body: some View {
         Map {
 //            if case .success(let nearbyCars) = viewModel.nearbyCarsUiState {
@@ -64,6 +66,14 @@ struct HomeView: View {
             .presentationDetents([.medium, .large, .height(96)])
             .presentationBackground(.ultraThinMaterial)
             .interactiveDismissDisabled()
+            .sheet(item: $selectedCar){ car in
+                VStack {
+                    Spacer()
+                    CarDetailsView(car)
+                }
+                .padding()
+                .presentationBackground(.ultraThinMaterial)
+            }
         }
         .onAppear(perform: viewModel.getNearbyCars)
         .onAppear(perform: viewModel.getFavoritesCars)
@@ -77,7 +87,12 @@ struct HomeView: View {
             Section {
                 VStack(spacing: 0){
                     ForEach(elements.prefix(3)) { car in
-                        CarCard(car)
+                        Button {
+                            self.selectedCar = car
+                        } label: {
+                            CarCard(car)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .background(.ultraThickMaterial)
