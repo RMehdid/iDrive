@@ -23,9 +23,11 @@
 		9958FEAB2B3590E100D5B370 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAA2B3590E100D5B370 /* User.swift */; };
 		9958FEAD2B35919C00D5B370 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAC2B35919C00D5B370 /* Client.swift */; };
 		9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEAE2B3591D400D5B370 /* Owner.swift */; };
-		9958FEB22B359A4400D5B370 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB12B359A4400D5B370 /* Engine.swift */; };
+		9958FEB22B359A4400D5B370 /* EngineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB12B359A4400D5B370 /* EngineType.swift */; };
 		9958FEB82B35D3B100D5B370 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB72B35D3B100D5B370 /* LocationManager.swift */; };
 		9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FEB92B35D98F00D5B370 /* CarStatus.swift */; };
+		99D761E22B361ABC00695854 /* Transmission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E12B361ABC00695854 /* Transmission.swift */; };
+		99D761E42B361B0300695854 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E32B361B0300695854 /* Engine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,10 +49,12 @@
 		9958FEAA2B3590E100D5B370 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9958FEAC2B35919C00D5B370 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		9958FEAE2B3591D400D5B370 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
-		9958FEB12B359A4400D5B370 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		9958FEB12B359A4400D5B370 /* EngineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineType.swift; sourceTree = "<group>"; };
 		9958FEB62B35C7E100D5B370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9958FEB72B35D3B100D5B370 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9958FEB92B35D98F00D5B370 /* CarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStatus.swift; sourceTree = "<group>"; };
+		99D761E12B361ABC00695854 /* Transmission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transmission.swift; sourceTree = "<group>"; };
+		99D761E32B361B0300695854 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +119,10 @@
 				9958FEAA2B3590E100D5B370 /* User.swift */,
 				9958FEAC2B35919C00D5B370 /* Client.swift */,
 				9958FEAE2B3591D400D5B370 /* Owner.swift */,
-				9958FEB12B359A4400D5B370 /* Engine.swift */,
+				9958FEB12B359A4400D5B370 /* EngineType.swift */,
 				9958FEB92B35D98F00D5B370 /* CarStatus.swift */,
+				99D761E12B361ABC00695854 /* Transmission.swift */,
+				99D761E32B361B0300695854 /* Engine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,16 +275,18 @@
 				9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */,
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */,
+				99D761E22B361ABC00695854 /* Transmission.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
 				9958FEB82B35D3B100D5B370 /* LocationManager.swift in Sources */,
-				9958FEB22B359A4400D5B370 /* Engine.swift in Sources */,
+				9958FEB22B359A4400D5B370 /* EngineType.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
 				9958FEAD2B35919C00D5B370 /* Client.swift in Sources */,
 				9958FE912B348D7800D5B370 /* Car.swift in Sources */,
 				9958FE972B348FA600D5B370 /* Double.swift in Sources */,
 				9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */,
+				99D761E42B361B0300695854 /* Engine.swift in Sources */,
 				9958FEAB2B3590E100D5B370 /* User.swift in Sources */,
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,

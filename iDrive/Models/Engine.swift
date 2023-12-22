@@ -7,16 +7,8 @@
 
 import Foundation
 
-enum Engine: Decodable {
-    case petrol(hp: Int)
-    case diesel(hp: Int)
-    
-    var toString: String {
-        switch self {
-        case .petrol(let hp):
-            return "Petrol - \(hp)hp"
-        case .diesel(let hp):
-            return "Diesel - \(hp)hp"
-        }
-    }
+struct Engine: Decodable {
+    let type: EngineType
+    let transmission: Transmission
+    let horsePower: Int
 }

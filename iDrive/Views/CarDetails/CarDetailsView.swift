@@ -44,7 +44,8 @@ struct CarDetailsView: View {
             }
             
             label(image: "fuelpump.fill", label: "Fuel level", value: "\(car.fuelLevel)Km")
-            label(image: "engine.combustion.fill", label: "engine performance", value: car.engine.toString)
+            label(image: "engine.combustion.fill", label: "engine performance", value: car.engine.type.rawValue + " - " + "\(car.engine.horsePower)hp")
+            label(image: "transmission", label: "engine transmission", value: car.engine.transmission.rawValue)
             label(image: "location.fill", label: "farthest location", value: "100Km")
             
             if car.isFreeCancellation {
