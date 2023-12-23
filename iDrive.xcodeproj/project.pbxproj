@@ -31,6 +31,8 @@
 		99D761E62B3627FF00695854 /* BookingUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E52B3627FF00695854 /* BookingUiState.swift */; };
 		99D761E82B363A1A00695854 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761E72B363A1A00695854 /* Package.swift */; };
 		99D761ED2B36FC2A00695854 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761EC2B36FC2A00695854 /* Date.swift */; };
+		99D761EF2B374FBF00695854 /* Pricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761EE2B374FBF00695854 /* Pricing.swift */; };
+		99D761F12B37511E00695854 /* CarDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D761F02B37511E00695854 /* CarDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		99D761E52B3627FF00695854 /* BookingUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUiState.swift; sourceTree = "<group>"; };
 		99D761E72B363A1A00695854 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		99D761EC2B36FC2A00695854 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		99D761EE2B374FBF00695854 /* Pricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pricing.swift; sourceTree = "<group>"; };
+		99D761F02B37511E00695854 /* CarDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				99D761E12B361ABC00695854 /* Transmission.swift */,
 				99D761E32B361B0300695854 /* Engine.swift */,
 				99D761E72B363A1A00695854 /* Package.swift */,
+				99D761EE2B374FBF00695854 /* Pricing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				9958FEA82B34F9F900D5B370 /* CarDetailsView.swift */,
+				99D761F02B37511E00695854 /* CarDetailsViewModel.swift */,
 			);
 			path = CarDetails;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */,
 				99D761E82B363A1A00695854 /* Package.swift in Sources */,
+				99D761F12B37511E00695854 /* CarDetailsViewModel.swift in Sources */,
 				99D761E22B361ABC00695854 /* Transmission.swift in Sources */,
+				99D761EF2B374FBF00695854 /* Pricing.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsView.swift in Sources */,
 				9958FEB82B35D3B100D5B370 /* LocationManager.swift in Sources */,

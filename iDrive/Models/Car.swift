@@ -22,7 +22,6 @@ struct Car: Decodable, Identifiable {
     let rating: Double
     let color: String
     let isFreeCancellation: Bool
-    let packages: [Package]
     
     var location: CLLocation {
         return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
@@ -46,13 +45,7 @@ struct Car: Decodable, Identifiable {
             status: .available,
             rating: 4.5,
             color: "White",
-            isFreeCancellation: true,
-            packages: [
-                .cityCruiser(pricePerHour: 700, pricePerKm: 10),
-                .explorerEscape(pricePerHour: 500, pricePerKm: 10),
-                .highwayVoyager(pricePerHour: 700, pricePerKm: 10),
-                .epicExpedition(pricePerHour: 500, pricePerKm: 0)
-            ]
+            isFreeCancellation: true
         ),
         Car(
             id: "AUDIQ71",
@@ -67,13 +60,7 @@ struct Car: Decodable, Identifiable {
             status: .outOfService,
             rating: 4.7,
             color: "White",
-            isFreeCancellation: true,
-            packages: [
-                .cityCruiser(pricePerHour: 700, pricePerKm: 100),
-                .explorerEscape(pricePerHour: 500, pricePerKm: 100),
-                .highwayVoyager(pricePerHour: 700, pricePerKm: 10),
-                .epicExpedition(pricePerHour: 500, pricePerKm: 10)
-            ]
+            isFreeCancellation: true
         ),
         Car(
             id: "CHEVROLETAVEO1",
@@ -88,13 +75,7 @@ struct Car: Decodable, Identifiable {
             status: .lowFuel,
             rating: 3.9,
             color: "White",
-            isFreeCancellation: false,
-            packages: [
-                .cityCruiser(pricePerHour: 700, pricePerKm: 100),
-                .explorerEscape(pricePerHour: 500, pricePerKm: 100),
-                .highwayVoyager(pricePerHour: 700, pricePerKm: 10),
-                .epicExpedition(pricePerHour: 500, pricePerKm: 10)
-            ]
+            isFreeCancellation: false
         ),
         Car(
             id: "SEATIBIZA2",
@@ -109,13 +90,7 @@ struct Car: Decodable, Identifiable {
             status: .rented,
             rating: 4.5,
             color: "White",
-            isFreeCancellation: true,
-            packages: [
-                .cityCruiser(pricePerHour: 700, pricePerKm: 100),
-                .explorerEscape(pricePerHour: 500, pricePerKm: 100),
-                .highwayVoyager(pricePerHour: 700, pricePerKm: 10),
-                .epicExpedition(pricePerHour: 500, pricePerKm: 10)
-            ]
+            isFreeCancellation: true
         ),
         Car(
             id: "SEATIBIZA3",
@@ -130,13 +105,7 @@ struct Car: Decodable, Identifiable {
             status: .rented,
             rating: 4.5,
             color: "White",
-            isFreeCancellation: true,
-            packages: [
-                .cityCruiser(pricePerHour: 700, pricePerKm: 100),
-                .explorerEscape(pricePerHour: 500, pricePerKm: 100),
-                .highwayVoyager(pricePerHour: 700, pricePerKm: 10),
-                .epicExpedition(pricePerHour: 500, pricePerKm: 10)
-            ]
+            isFreeCancellation: true
         )
     ]
 }

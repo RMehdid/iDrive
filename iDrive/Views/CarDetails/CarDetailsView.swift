@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CarDetailsView: View {
+    
+    @StateObject private var viewModel = ViewModel()
+    
     let car: Car
     
     @State private var bookingUiState: BookingUiState = .idle
@@ -25,11 +28,16 @@ struct CarDetailsView: View {
         case .idle:
             carDetailsCard()
             ownerDetails(.owner)
-            if let package = car.packages.first {
-                bookCard(price: package.priceEstimation)
+            switch viewModel.packagesUiState {
+            case .idle, .loading, .failure:
+                EmptyView()
+            case .success(let packages):
+                if let package = packages.first {
+                    bookCard(price: package.pricing.initialPrice, packages: packages)
+                }
             }
-        case .choosePackage(let car):
-            choosePackage(car)
+        case .choosePackage(let car, let packages):
+            choosePackage(car, packages: packages)
         case .showPrice(let package):
             showPriceView(package)
         case .pay:
@@ -113,7 +121,7 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func bookCard(price priceEstimation: Int) -> some View {
+    private func bookCard(price priceEstimation: Int, packages: [Package]) -> some View {
         HStack{
             VStack(alignment: .leading){
                 Text(String(priceEstimation) + "DA")
@@ -125,7 +133,7 @@ struct CarDetailsView: View {
             Spacer()
             
             Button {
-                self.bookingUiState = .choosePackage(car: car)
+                self.bookingUiState = .choosePackage(car: car, packages: packages)
             } label: {
                 Text("Book now")
                     .font(.system(size: 18, weight: .bold))
@@ -142,7 +150,7 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func choosePackage(_ car: Car) -> some View {
+    private func choosePackage(_ car: Car, packages: [Package]) -> some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading){
                 Text(car.make)
@@ -150,7 +158,7 @@ struct CarDetailsView: View {
                 Text(car.model + " " + String(car.year))
                     .font(.system(size: 24, weight: .bold))
             }
-            ForEach(car.packages) { packageBuilder($0) }
+            ForEach(packages) { packageBuilder($0) }
             
             HStack{
                 Spacer()
@@ -202,14 +210,6 @@ struct CarDetailsView: View {
             .padding()
             .background(Color.black.opacity(0.3))
             .clipShape(.rect(cornerRadius: 12))
-            
-            List {
-                LabeledContent("Price per day", value: String(package.pricePerHourPerKm.0))
-                LabeledContent("Price per km", value: String(package.pricePerHourPerKm.1))
-                LabeledContent("Total", value: String(package.calculatePrice(numberOfHours: pickupDate.hoursBetween(secondDate: dropOffDate))))
-            }
-            .clipShape(.rect(cornerRadius: 12))
-            .frame(maxHeight: 200)
             
             HStack{
                 Spacer()
