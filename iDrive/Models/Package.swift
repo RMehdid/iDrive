@@ -11,6 +11,8 @@ struct Package: Decodable, Identifiable {
     let id: Int
     let name: String
     let description: String
+    let initialPeriod: Int
+    let initialDistance: Int
     let pricing: Pricing
     
     var imageName: String {
@@ -21,5 +23,14 @@ struct Package: Decodable, Identifiable {
         case 4: return "beach.umbrella.fill"
         default: return ""
         }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case description
+        case initialPeriod = "initial_period"
+        case initialDistance = "initial_distance"
+        case pricing
     }
 }

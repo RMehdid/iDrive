@@ -17,33 +17,37 @@ struct CarDetailsView: View {
     
     @State private var pickupDate = Date()
     @State private var dropOffDate = Date()
-    @State private var mileage = ""
     
     init(_ car: Car) {
         self.car = car
     }
     
     var body: some View {
-        switch bookingUiState {
-        case .idle:
-            carDetailsCard()
-            ownerDetails(.owner)
-            switch viewModel.packagesUiState {
-            case .idle, .loading, .failure:
-                EmptyView()
-            case .success(let packages):
-                if let package = packages.first {
-                    bookCard(price: package.pricing.initialPrice, packages: packages)
+        VStack{
+            switch bookingUiState {
+            case .idle:
+                carDetailsCard()
+                ownerDetails(.owner)
+                switch viewModel.packagesUiState {
+                case .idle, .loading, .failure:
+                    EmptyView()
+                case .success(let packages):
+                    if let package = packages.first {
+                        bookCard(price: package.pricing.initialPrice, packages: packages)
+                    }
                 }
+            case .choosePackage(let car, let packages):
+                choosePackage(car, packages: packages)
+            case .showPrice(let package):
+                showPriceView(package)
+            case .pay:
+                EmptyView()
+            case .booked:
+                EmptyView()
             }
-        case .choosePackage(let car, let packages):
-            choosePackage(car, packages: packages)
-        case .showPrice(let package):
-            showPriceView(package)
-        case .pay:
-            EmptyView()
-        case .booked:
-            EmptyView()
+        }
+        .onAppear {
+            viewModel.getPackages(carId: car.id)
         }
     }
     
@@ -181,32 +185,15 @@ struct CarDetailsView: View {
     @ViewBuilder
     private func showPriceView(_ package: Package) -> some View {
         VStack{
-            HStack{
-                VStack(alignment: .leading){
-                    Text("From")
-                        .font(.system(size: 16, weight: .regular))
-                        .opacity(0.8)
-                    DatePicker("", selection: $pickupDate)
-                }
-                
-                Button {
-                    let tempDate = self.dropOffDate
-                    self.dropOffDate = self.pickupDate
-                    self.pickupDate = tempDate
-                } label: {
-                    Image(systemName: "arrow.left.arrow.right.circle.fill")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                }
-                
-                VStack(alignment: .leading){
-                    Text("To")
-                        .font(.system(size: 16, weight: .regular))
-                        .opacity(0.8)
-                    DatePicker("", selection: $dropOffDate)
-                }
+            VStack{
+                DatePicker("From", selection: $pickupDate)
+                    .onChange(of: pickupDate) { _, newValue in
+                        dropOffDate = pickupDate.addingTimeInterval(TimeInterval(package.initialPeriod))
+                    }
+            
+                DatePicker("To", selection: $dropOffDate)
+                    .disabled(true)
             }
-            .fixedSize(horizontal: true, vertical: false)
             .padding()
             .background(Color.black.opacity(0.3))
             .clipShape(.rect(cornerRadius: 12))

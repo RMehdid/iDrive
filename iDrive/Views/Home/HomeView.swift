@@ -81,7 +81,6 @@ struct HomeView: View {
                     }
                     .padding()
                     .presentationBackground(.ultraThinMaterial)
-                    .fixedSize(horizontal: false, vertical: true)
                 }
             }
         }
