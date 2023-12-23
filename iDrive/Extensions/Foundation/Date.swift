@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+extension Date {
+    func hoursBetween(secondDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour], from: self, to: secondDate)
+        return components.hour ?? 0
+    }
+}

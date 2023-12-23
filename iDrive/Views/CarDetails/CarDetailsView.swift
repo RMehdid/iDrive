@@ -25,11 +25,15 @@ struct CarDetailsView: View {
         case .idle:
             carDetailsCard()
             ownerDetails(.owner)
-            bookCard(price: car.priceEstimationPerHour)
+            if let package = car.packages.first {
+                bookCard(price: package.priceEstimation)
+            }
         case .choosePackage(let car):
             choosePackage(car)
         case .showPrice(let package):
             showPriceView(package)
+        case .pay:
+            EmptyView()
         case .booked:
             EmptyView()
         }
@@ -146,7 +150,7 @@ struct CarDetailsView: View {
                 Text(car.model + " " + String(car.year))
                     .font(.system(size: 24, weight: .bold))
             }
-            ForEach(Package.allCases) { packageBuilder($0) }
+            ForEach(car.packages) { packageBuilder($0) }
             
             HStack{
                 Spacer()
@@ -169,8 +173,74 @@ struct CarDetailsView: View {
     @ViewBuilder
     private func showPriceView(_ package: Package) -> some View {
         VStack{
+            HStack{
+                VStack(alignment: .leading){
+                    Text("From")
+                        .font(.system(size: 16, weight: .regular))
+                        .opacity(0.8)
+                    DatePicker("", selection: $pickupDate)
+                }
+                
+                Button {
+                    let tempDate = self.dropOffDate
+                    self.dropOffDate = self.pickupDate
+                    self.pickupDate = tempDate
+                } label: {
+                    Image(systemName: "arrow.left.arrow.right.circle.fill")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                }
+                
+                VStack(alignment: .leading){
+                    Text("To")
+                        .font(.system(size: 16, weight: .regular))
+                        .opacity(0.8)
+                    DatePicker("", selection: $dropOffDate)
+                }
+            }
+            .fixedSize(horizontal: true, vertical: false)
+            .padding()
+            .background(Color.black.opacity(0.3))
+            .clipShape(.rect(cornerRadius: 12))
             
+            List {
+                LabeledContent("Price per day", value: String(package.pricePerHourPerKm.0))
+                LabeledContent("Price per km", value: String(package.pricePerHourPerKm.1))
+                LabeledContent("Total", value: String(package.calculatePrice(numberOfHours: pickupDate.hoursBetween(secondDate: dropOffDate))))
+            }
+            .clipShape(.rect(cornerRadius: 12))
+            .frame(maxHeight: 200)
+            
+            HStack{
+                Spacer()
+                
+                Button("Cancel") {
+                    self.bookingUiState = .idle
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(8)
+                .padding(.horizontal)
+                .background(.ultraThinMaterial)
+                .background(Color.red)
+                .clipShape(.capsule)
+                
+                Spacer()
+                
+                Button("Confirm") {
+                    self.bookingUiState = .pay
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(8)
+                .padding(.horizontal)
+                .background(.ultraThinMaterial)
+                .clipShape(.capsule)
+                
+                Spacer()
+            }
         }
+        .padding()
+        .background(.ultraThickMaterial)
+        .clipShape(.rect(cornerRadius: 16))
     }
     
     @ViewBuilder
@@ -182,7 +252,7 @@ struct CarDetailsView: View {
                 HStack{
                     Image(systemName: package.imageName)
                         .frame(width: 24, height: 24)
-                    Text(package.rawValue)
+                    Text(package.name)
                         .font(.system(size: 20, weight: .bold))
                     Spacer()
                 }

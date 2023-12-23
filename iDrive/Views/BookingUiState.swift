@@ -11,5 +11,6 @@ enum BookingUiState {
     case idle
     case choosePackage(car: Car)
     case showPrice(selectedPackage: Package)
+    case pay
     case booked
 }
