@@ -16,6 +16,4 @@ struct Owner: User {
     var phone: String
     var profileImageUrl: String
     var rating: Double
-    
-    static let owner = Owner(id: "1", username: "raynex", firstname: "Samy Abderraouf", lastname: "Mehdid", email: "samy.mhd16@gmail.com", phone: "+213540408051", profileImageUrl: "profile_placeholder", rating: 4.4)
 }

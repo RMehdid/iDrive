@@ -27,7 +27,13 @@ struct CarDetailsView: View {
             switch bookingUiState {
             case .idle:
                 carDetailsCard()
-                ownerDetails(.owner)
+                switch viewModel.ownerUiState {
+                case .idle, .loading, .failure:
+                    EmptyView()
+                case .success(let owner):
+                    ownerDetails(owner)
+                }
+                
                 switch viewModel.packagesUiState {
                 case .idle, .loading, .failure:
                     EmptyView()
@@ -48,6 +54,7 @@ struct CarDetailsView: View {
         }
         .onAppear {
             viewModel.getPackages(carId: car.id)
+            viewModel.getOwner(ownerId: car.ownerId)
         }
     }
     
@@ -242,6 +249,7 @@ struct CarDetailsView: View {
                     Text(package.name)
                         .font(.system(size: 20, weight: .bold))
                     Spacer()
+                    Text(String(package.pricing.initialPrice) + "DA")
                 }
                 
                 Text(package.description)

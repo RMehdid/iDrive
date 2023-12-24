@@ -11,6 +11,7 @@ extension CarDetailsView {
     class ViewModel: ObservableObject {
         
         @Published private(set) var packagesUiState: UiState<[Package]> = .idle
+        @Published private(set) var ownerUiState: UiState<Owner> = .idle
         
         func getPackages(carId: String) {
             let packages = [
@@ -51,6 +52,12 @@ extension CarDetailsView {
                                          pricePerExtraKm: 20))
             ]
             self.packagesUiState = .success(packages)
+        }
+        
+        func getOwner(ownerId: String) {
+            let owner = Owner(id: "1", username: "raynex", firstname: "Samy Abderraouf", lastname: "Mehdid", email: "samy.mhd16@gmail.com", phone: "+213540408051", profileImageUrl: "profile_placeholder", rating: 4.4)
+            
+            ownerUiState = .success(owner)
         }
     }
 }
