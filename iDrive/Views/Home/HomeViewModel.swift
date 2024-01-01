@@ -54,7 +54,5 @@ extension HomeView {
                 }
             }
         }
-        
-        
     }
 }
