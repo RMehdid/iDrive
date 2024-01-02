@@ -203,7 +203,7 @@ struct CarDetailsView: View {
                     .disabled(true)
             }
             .padding()
-            .background(Color.black.opacity(0.3))
+            .background(.ultraThickMaterial)
             .clipShape(.rect(cornerRadius: 12))
             
             HStack{

@@ -20,12 +20,10 @@ extension CarDetailsView {
                     let car = try await CarRepo.shared.getCar(carId: carId)
                     
                     DispatchQueue.main.async {
-                        debugPrint(car)
                         self.carDetailsUiState = .success(car)
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        debugPrint(error)
                         self.carDetailsUiState = .failure(error as? DVError)
                     }
                 }
