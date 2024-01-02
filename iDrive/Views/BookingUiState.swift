@@ -9,7 +9,7 @@ import Foundation
 
 enum BookingUiState {
     case idle
-    case choosePackage(car: Car, packages: [Package])
+    case choosePackage
     case showPrice(selectedPackage: Package)
     case pay
     case booked

@@ -24,37 +24,36 @@ struct CarDetailsView: View {
     
     var body: some View {
         VStack{
-            switch bookingUiState {
+            switch viewModel.carDetailsUiState {
             case .idle:
-                switch viewModel.carDetailsUiState {
-                case .idle, .loading, .failure:
-                    EmptyView()
-                case .success(let car):
+                EmptyView()
+            case .loading:
+                EmptyView()
+            case .success(let car):
+                switch bookingUiState {
+                case .idle:
                     carDetailsCard(car)
                     ownerDetails(car.owner)
                     
-                    switch viewModel.packagesUiState {
-                    case .idle, .loading, .failure:
-                        EmptyView()
-                    case .success(let packages):
-                        if let package = packages.first {
-                            bookCard(car: car, price: package.pricing.initialPrice, packages: packages)
-                        }
+                    if let package = car.packages.first {
+                        bookCard(package)
                     }
+                case .choosePackage:
+                    choosePackage(car)
+                case .showPrice(let package):
+                    showPriceView(package)
+                case .pay:
+                    EmptyView()
+                case .booked:
+                    EmptyView()
                 }
-            case .choosePackage(let car, let packages):
-                choosePackage(car, packages: packages)
-            case .showPrice(let package):
-                showPriceView(package)
-            case .pay:
-                EmptyView()
-            case .booked:
+            case .failure(let error):
                 EmptyView()
             }
+            
         }
         .onAppear {
             viewModel.getCarDetails(carId)
-            viewModel.getPackages(carId: carId)
         }
     }
     
@@ -134,10 +133,10 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func bookCard(car: Car, price priceEstimation: Int, packages: [Package]) -> some View {
+    private func bookCard(_ firstPackage: Package) -> some View {
         HStack{
             VStack(alignment: .leading){
-                Text(String(priceEstimation) + "DA")
+                Text(String(firstPackage.pricing.initialPrice) + "DA")
                     .font(.system(size: 18, weight: .bold))
                 Text("Price estimation")
                     .font(.system(size: 16, weight: .regular))
@@ -146,7 +145,7 @@ struct CarDetailsView: View {
             Spacer()
             
             Button {
-                self.bookingUiState = .choosePackage(car: car, packages: packages)
+                self.bookingUiState = .choosePackage
             } label: {
                 Text("Book now")
                     .font(.system(size: 18, weight: .bold))
@@ -163,7 +162,7 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func choosePackage(_ car: Car, packages: [Package]) -> some View {
+    private func choosePackage(_ car: Car) -> some View {
         VStack(alignment: .leading){
             VStack(alignment: .leading){
                 Text(car.make)
@@ -171,7 +170,7 @@ struct CarDetailsView: View {
                 Text(car.model + " " + String(car.year))
                     .font(.system(size: 24, weight: .bold))
             }
-            ForEach(packages) { packageBuilder($0) }
+            ForEach(car.packages) { packageBuilder($0) }
             
             HStack{
                 Spacer()

@@ -22,6 +22,7 @@ struct Car: Decodable, Identifiable {
     let rating: Double
     let color: String
     let isFreeCancelation: Bool
+    let packages: [Package]
     
     var location: CLLocation {
         return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
