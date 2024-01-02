@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308F52B4361FC0091AE14 /* NetworkManager.swift */; };
 		992308F92B4362460091AE14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 992308F82B4362460091AE14 /* Alamofire */; };
+		992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FA2B43661F0091AE14 /* CarRepo.swift */; };
+		992308FD2B43F7480091AE14 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FC2B43F7480091AE14 /* NetworkLogger.swift */; };
 		9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FE7E2B338C4C00D5B370 /* iDriveApp.swift */; };
 		9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958FE802B338C4C00D5B370 /* HomeView.swift */; };
 		9958FE832B338C4E00D5B370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9958FE822B338C4E00D5B370 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		992308F52B4361FC0091AE14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		992308FA2B43661F0091AE14 /* CarRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepo.swift; sourceTree = "<group>"; };
+		992308FC2B43F7480091AE14 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		9958FE7B2B338C4C00D5B370 /* iDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9958FE7E2B338C4C00D5B370 /* iDriveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iDriveApp.swift; sourceTree = "<group>"; };
 		9958FE802B338C4C00D5B370 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -82,12 +86,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		992308F42B4361EE0091AE14 /* Service */ = {
+		992308F42B4361EE0091AE14 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
-				992308F52B4361FC0091AE14 /* NetworkManager.swift */,
+				992308FA2B43661F0091AE14 /* CarRepo.swift */,
 			);
-			path = Service;
+			path = Repos;
 			sourceTree = "<group>";
 		};
 		9958FE722B338C4C00D5B370 = {
@@ -109,7 +113,7 @@
 		9958FE7D2B338C4C00D5B370 /* iDrive */ = {
 			isa = PBXGroup;
 			children = (
-				992308F42B4361EE0091AE14 /* Service */,
+				992308F42B4361EE0091AE14 /* Repos */,
 				9958FEB62B35C7E100D5B370 /* Info.plist */,
 				9958FEB32B35C08700D5B370 /* Managers */,
 				9958FE9E2B34B6ED00D5B370 /* UiState */,
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				9958FEB72B35D3B100D5B370 /* LocationManager.swift */,
+				992308F52B4361FC0091AE14 /* NetworkManager.swift */,
+				992308FC2B43F7480091AE14 /* NetworkLogger.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -321,9 +327,11 @@
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
 				9958FEAD2B35919C00D5B370 /* Client.swift in Sources */,
 				9958FE912B348D7800D5B370 /* Car.swift in Sources */,
+				992308FD2B43F7480091AE14 /* NetworkLogger.swift in Sources */,
 				9958FE972B348FA600D5B370 /* Double.swift in Sources */,
 				9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */,
 				99D761E42B361B0300695854 /* Engine.swift in Sources */,
+				992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */,
 				9958FEAB2B3590E100D5B370 /* User.swift in Sources */,
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,

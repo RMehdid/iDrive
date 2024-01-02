@@ -12,4 +12,5 @@ enum DVError: Error {
     case badUrl
     case badResponse
     case forbidden
+    case unknown
 }

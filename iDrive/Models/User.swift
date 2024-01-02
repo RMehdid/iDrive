@@ -1,4 +1,4 @@
-email//
+//
 //  User.swift
 //  iDrive
 //
@@ -8,7 +8,7 @@ email//
 import Foundation
 
 protocol User: Decodable, Identifiable {
-    var id: String { get }
+    var id: Int { get }
     var firstname: String { get }
     var lastname: String { get }
     var email: String? { get }

@@ -9,11 +9,11 @@ import SwiftUI
 import CoreLocation
 
 struct CarCard: View {
-    let car: Car
+    let car: SimpleCar
     
 //    let userLocation = LocationManager.shared.location
     
-    init(_ car: Car) {
+    init(_ car: SimpleCar) {
         self.car = car
     }
     
@@ -57,6 +57,6 @@ struct CarCard: View {
 }
 
 #Preview {
-    CarCard(Car.sampleCars.first!)
+    CarCard(SimpleCar(id: 192892, imageUrl: "", model: "Ibiza", color: "White", year: 2019, rating: 3.99))
         .background(.ultraThinMaterial)
 }

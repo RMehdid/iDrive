@@ -8,12 +8,11 @@
 import Foundation
 
 struct Owner: User {
-    var id: String
-    var username: String
+    var id: Int
     var firstname: String
     var lastname: String
-    var email: String
+    var email: String?
     var phone: String
-    var profileImageUrl: String
+    var profileImageUrl: String?
     var rating: Double
 }

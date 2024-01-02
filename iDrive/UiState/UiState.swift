@@ -11,5 +11,5 @@ enum UiState<Model> {
     case idle
     case loading
     case success(Model)
-    case failure(DVError)
+    case failure(DVError?)
 }

@@ -11,35 +11,35 @@ struct CarDetailsView: View {
     
     @StateObject private var viewModel = ViewModel()
     
-    let car: Car
+    let carId: Int
     
     @State private var bookingUiState: BookingUiState = .idle
     
     @State private var pickupDate = Date()
     @State private var dropOffDate = Date()
     
-    init(_ car: Car) {
-        self.car = car
+    init(_ carId: Int) {
+        self.carId = carId
     }
     
     var body: some View {
         VStack{
             switch bookingUiState {
             case .idle:
-                carDetailsCard()
-                switch viewModel.ownerUiState {
+                switch viewModel.carDetailsUiState {
                 case .idle, .loading, .failure:
                     EmptyView()
-                case .success(let owner):
-                    ownerDetails(owner)
-                }
-                
-                switch viewModel.packagesUiState {
-                case .idle, .loading, .failure:
-                    EmptyView()
-                case .success(let packages):
-                    if let package = packages.first {
-                        bookCard(price: package.pricing.initialPrice, packages: packages)
+                case .success(let car):
+                    carDetailsCard(car)
+                    ownerDetails(car.owner)
+                    
+                    switch viewModel.packagesUiState {
+                    case .idle, .loading, .failure:
+                        EmptyView()
+                    case .success(let packages):
+                        if let package = packages.first {
+                            bookCard(car: car, price: package.pricing.initialPrice, packages: packages)
+                        }
                     }
                 }
             case .choosePackage(let car, let packages):
@@ -53,13 +53,13 @@ struct CarDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.getPackages(carId: car.id)
-            viewModel.getOwner(ownerId: car.ownerId)
+            viewModel.getCarDetails(carId)
+            viewModel.getPackages(carId: carId)
         }
     }
     
     @ViewBuilder
-    private func carDetailsCard() -> some View {
+    private func carDetailsCard(_ car: Car) -> some View {
         VStack(alignment: .leading, spacing: 16){
             VStack(alignment: .leading){
                 HStack{
@@ -82,7 +82,7 @@ struct CarDetailsView: View {
             label(image: "gearshift.layout.sixspeed", label: "engine transmission", value: car.engine.transmission.rawValue)
             label(image: "location.fill", label: "farthest location", value: "100Km")
             
-            if car.isFreeCancellation {
+            if car.isFreeCancelation {
                 HStack{
                     Spacer()
                     Text("Free cancellation")
@@ -110,7 +110,7 @@ struct CarDetailsView: View {
     private func ownerDetails(_ owner: Owner) -> some View {
         HStack{
             VStack(alignment: .leading, spacing: 16){
-                Text(owner.firstname + owner.lastname)
+                Text(owner.firstname + " " + owner.lastname)
                     .font(.system(size: 20, weight: .semibold))
                 HStack{
                     Image(systemName: "star.fill")
@@ -121,10 +121,12 @@ struct CarDetailsView: View {
             }
             Spacer()
             
-            Image(owner.profileImageUrl)
-                .resizable()
-                .frame(width: 38, height: 38)
-                .clipShape(.circle)
+            if let profileImageUrl = owner.profileImageUrl {
+                Image(profileImageUrl)
+                    .resizable()
+                    .frame(width: 38, height: 38)
+                    .clipShape(.circle)
+            }
         }
         .padding()
         .background(.ultraThickMaterial)
@@ -132,7 +134,7 @@ struct CarDetailsView: View {
     }
     
     @ViewBuilder
-    private func bookCard(price priceEstimation: Int, packages: [Package]) -> some View {
+    private func bookCard(car: Car, price priceEstimation: Int, packages: [Package]) -> some View {
         HStack{
             VStack(alignment: .leading){
                 Text(String(priceEstimation) + "DA")
@@ -284,5 +286,5 @@ struct CarDetailsView: View {
 }
 
 #Preview {
-    CarDetailsView(Car.sampleCars.first!)
+    CarDetailsView(5678912035)
 }

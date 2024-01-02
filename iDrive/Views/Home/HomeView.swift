@@ -15,7 +15,7 @@ struct HomeView: View {
     
     @State private var searchText: String = ""
     
-    @State private var selectedCar: Car? = nil
+    @State private var selectedCar: SimpleCar? = nil
     
     @State private var position: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
     
@@ -77,7 +77,7 @@ struct HomeView: View {
                 .sheet(item: $selectedCar){ car in
                     VStack {
                         Spacer()
-                        CarDetailsView(car)
+                        CarDetailsView(car.id)
                     }
                     .padding()
                     .presentationBackground(.ultraThinMaterial)
@@ -91,7 +91,7 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func listBuilder(for title: String, with elements: [Car]) -> some View {
+    private func listBuilder(for title: String, with elements: [SimpleCar]) -> some View {
         VStack(alignment: .leading){
             Section {
                 VStack(spacing: 0){

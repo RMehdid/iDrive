@@ -10,10 +10,31 @@ import Foundation
 extension CarDetailsView {
     class ViewModel: ObservableObject {
         
-        @Published private(set) var packagesUiState: UiState<[Package]> = .idle
-        @Published private(set) var ownerUiState: UiState<Owner> = .idle
+        @Published private(set) var carDetailsUiState: UiState<Car> = .idle
         
-        func getPackages(carId: String) {
+        @Published private(set) var packagesUiState: UiState<[Package]> = .idle
+        
+        func getCarDetails(_ carId: Int) {
+            self.carDetailsUiState = .loading
+            
+            Task {
+                do {
+                    let car = try await CarRepo.shared.getCar(carId: carId)
+                    
+                    DispatchQueue.main.async {
+                        debugPrint(car)
+                        self.carDetailsUiState = .success(car)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        debugPrint(error)
+                        self.carDetailsUiState = .failure(error as? DVError)
+                    }
+                }
+            }
+        }
+        
+        func getPackages(carId: Int) {
             let packages = [
                 Package(id: 1,
                         name: "City Cruiser",
@@ -52,12 +73,6 @@ extension CarDetailsView {
                                          pricePerExtraKm: 20))
             ]
             self.packagesUiState = .success(packages)
-        }
-        
-        func getOwner(ownerId: String) {
-            let owner = Owner(id: "1", username: "raynex", firstname: "Samy Abderraouf", lastname: "Mehdid", email: "samy.mhd16@gmail.com", phone: "+213540408051", profileImageUrl: "profile_placeholder", rating: 4.4)
-            
-            ownerUiState = .success(owner)
         }
     }
 }

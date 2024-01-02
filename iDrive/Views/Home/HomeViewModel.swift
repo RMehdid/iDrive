@@ -10,17 +10,17 @@ import Foundation
 extension HomeView {
     final class ViewModel: ObservableObject {
         
-        @Published private(set) var nearbyCarsUiState: UiState<[Car]> = .idle
-        @Published private(set) var favoritesCarsUiState: UiState<[Car]> = .idle
-        @Published private(set) var recentCarsUiState: UiState<[Car]> = .idle
-        @Published private(set) var searchCarsUiState: UiState<[Car]> = .idle
+        @Published private(set) var nearbyCarsUiState: UiState<[SimpleCar]> = .idle
+        @Published private(set) var favoritesCarsUiState: UiState<[SimpleCar]> = .idle
+        @Published private(set) var recentCarsUiState: UiState<[SimpleCar]> = .idle
+        @Published private(set) var searchCarsUiState: UiState<[SimpleCar]> = .idle
         
         func getNearbyCars() {
             self.nearbyCarsUiState = .loading
             
             Task {
                 DispatchQueue.main.async {
-                    self.nearbyCarsUiState = .success(Car.sampleCars)
+//                    self.nearbyCarsUiState = .success(Car.sampleCars)
                 }
             }
         }
@@ -30,7 +30,7 @@ extension HomeView {
             
             Task {
                 DispatchQueue.main.async {
-                    self.favoritesCarsUiState = .success(Car.sampleCars)
+//                    self.favoritesCarsUiState = .success(Car.sampleCars)
                 }
             }
         }
@@ -40,7 +40,7 @@ extension HomeView {
             
             Task {
                 DispatchQueue.main.async {
-                    self.recentCarsUiState = .success(Car.sampleCars)
+//                    self.recentCarsUiState = .success(Car.sampleCars)
                 }
             }
         }
@@ -49,8 +49,16 @@ extension HomeView {
             self.searchCarsUiState = .loading
             
             Task {
-                DispatchQueue.main.async {
-                    self.searchCarsUiState = .success(Car.sampleCars)
+                do {
+                    let cars = try await CarRepo.shared.getCars(searchText: query)
+                    
+                    DispatchQueue.main.async {
+                        self.searchCarsUiState = .success(cars)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.searchCarsUiState = .failure(error as? DVError)
+                    }
                 }
             }
         }

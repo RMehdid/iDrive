@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BaseUrl</key>
-	<string>127.0.0.1:8080</string>
+	<string>http://localhost:8080</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
