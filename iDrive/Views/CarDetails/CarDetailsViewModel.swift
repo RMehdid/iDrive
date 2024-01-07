@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CarDetailsView {
+extension CarDetailsSheet {
     class ViewModel: ObservableObject {
         
         @Published private(set) var carDetailsUiState: UiState<Car> = .idle

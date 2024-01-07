@@ -77,7 +77,7 @@ struct HomeView: View {
                 .sheet(item: $selectedCar){ car in
                     VStack {
                         Spacer()
-                        CarDetailsView(car.id)
+                        CarDetailsSheet(car.id)
                     }
                     .padding()
                     .presentationBackground(.ultraThinMaterial)

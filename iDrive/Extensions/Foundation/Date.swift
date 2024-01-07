@@ -14,3 +14,11 @@ extension Date {
         return components.hour ?? 0
     }
 }
+
+extension Date {
+    func getFormattedDate(format: String = "dd/mm/yyyy") -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
+    }
+}
