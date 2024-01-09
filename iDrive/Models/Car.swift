@@ -13,9 +13,9 @@ struct Car: Decodable, Identifiable {
     let make: String
     let model: String
     let year: Int
-    let fuelLevel: Int
+    let fuelLevel: Int?
     let engine: Engine
-    let coordinates: Coordinates
+    let coordinates: Coordinates?
     let imageUrl: String
     let owner: Owner
     let status: CarStatus
@@ -24,11 +24,19 @@ struct Car: Decodable, Identifiable {
     let isFreeCancelation: Bool
     let packages: [Package]
     
-    var location: CLLocation {
-        return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    var location: CLLocation? {
+        guard let latitude = coordinates?.latitude,
+              let longitude = coordinates?.longitude else {
+                  return nil
+              }
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    func distance(userLocation: CLLocation) -> Double {
+    func distance(userLocation: CLLocation) -> Double? {
+        guard let location = location else {
+            return nil
+        }
+        
         return location.distance(from: userLocation)
     }
 }

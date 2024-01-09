@@ -42,9 +42,25 @@ struct HomeView: View {
                     HStack(spacing: 16){
                         searchBar()
                         
-                        Circle()
-                            .fill(Color.gray)
-                            .frame(width: 42, height: 42)
+                        if case .success(let user) = viewModel.userUiState {
+                            if let profileImage = user.profileImageUrl {
+                                 
+                            } else {
+                                Text(user.namePlaceholderForImage)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundStyle(.white)
+                                    .background {
+                                        Circle()
+                                            .fill(Color.gray)
+                                            .frame(width: 42, height: 42)
+                                    }
+                            }
+                        } else {
+                            
+                            Circle()
+                                .fill(Color.gray)
+                                .frame(width: 42, height: 42)
+                        }
                     }
                     
                     ScrollView(.vertical, showsIndicators: false) {

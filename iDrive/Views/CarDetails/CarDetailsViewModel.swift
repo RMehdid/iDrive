@@ -24,6 +24,7 @@ extension CarDetailsSheet {
                     }
                 } catch {
                     DispatchQueue.main.async {
+                        debugPrint(error)
                         self.carDetailsUiState = .failure(error as? DVError)
                     }
                 }

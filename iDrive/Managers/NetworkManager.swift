@@ -126,7 +126,7 @@ class NetworkManager {
                     continuation.resume(throwing: DVError.forbidden)
                 case 200...299:
                     switch response.result {
-                    case .success(let res):
+                    case .success:
                         continuation.resume()
                     case .failure:
                         continuation.resume(throwing: DVError.timout)

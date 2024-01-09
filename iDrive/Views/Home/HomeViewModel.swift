@@ -14,6 +14,15 @@ extension HomeView {
         @Published private(set) var favoritesCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var recentCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var searchCarsUiState: UiState<[SimpleCar]> = .idle
+        @Published private(set) var userUiState: UiState<User> = .idle
+        
+        init() {
+            self.getUser()
+        }
+        
+        func getUser() {
+            self.userUiState = .success(Client.sampleClient)
+        }
         
         func getNearbyCars() {
             self.nearbyCarsUiState = .loading

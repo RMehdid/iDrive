@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct Client: User {
-    var id: Int
-    var firstname: String
-    var lastname: String
-    var email: String?
-    var phone: String
-    var profileImageUrl: String?
-    var rating: Double
+class Client: User {
+    
+    static let sampleClient = User(id: 0, firstname: "Samy Abderraouf", lastname: "Mehdid", phone: "+213540408051", rating: 3.9)
 }
