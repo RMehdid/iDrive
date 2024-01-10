@@ -19,18 +19,13 @@ struct PackagesSheet: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            VStack(alignment: .leading){
-                Text(car.make)
-                    .font(.system(size: 18, weight: .regular))
-                Text(car.model + " " + String(car.year))
-                    .font(.system(size: 24, weight: .bold))
-            }
+            Text(car.make)
+                .font(.system(size: 18, weight: .regular))
+            Text(car.model + " " + String(car.year))
+                .font(.system(size: 24, weight: .bold))
             
             ForEach(car.packages) { packageBuilder($0) }
         }
-        .padding()
-        .background(.ultraThickMaterial)
-        .clipShape(.rect(cornerRadius: 16))
         .sheet(item: $showSheet) { package in
             DatePickerSheet(using: package) { pickup, dropOff in
                 print("pickup: " + pickup.description)

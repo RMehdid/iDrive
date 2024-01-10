@@ -12,6 +12,7 @@ struct CarDetailsSheet: View {
     @StateObject private var viewModel = ViewModel()
     
     @State private var showSheet: Car?
+    @State private var sheetHeight: CGFloat = .zero
     
     let carId: Int
     
@@ -36,11 +37,23 @@ struct CarDetailsSheet: View {
             }
             
         }
+        .presentationDetents([showSheet == nil ? .large : .height(0)])
         .onAppear {
             viewModel.getCarDetails(carId)
         }
         .sheet(item: $showSheet) { car in
             PackagesSheet(for: car)
+                .padding()
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(InnerHeightPreferenceKey.self) { newHeight in
+                    sheetHeight = newHeight
+                }
+                .presentationDetents([.height(sheetHeight)])
+                .presentationBackground(.ultraThinMaterial)
         }
     }
     
@@ -63,7 +76,10 @@ struct CarDetailsSheet: View {
                     .font(.system(size: 24, weight: .bold))
             }
             
-            label(image: "fuelpump.fill", label: "Fuel level", value: "\(car.fuelLevel)Km")
+            if let fuelLevel = car.fuelLevel {
+                label(image: "fuelpump.fill", label: "Fuel level", value: "\(fuelLevel)Km")
+            }
+            
             label(image: "engine.combustion.fill", label: "engine performance", value: car.engine.type.rawValue + " - " + "\(car.engine.horsePower)hp")
             label(image: "gearshift.layout.sixspeed", label: "engine transmission", value: car.engine.transmission.rawValue)
             label(image: "location.fill", label: "farthest location", value: "100Km")
@@ -172,4 +188,11 @@ struct CarDetailsSheet: View {
 
 #Preview {
     CarDetailsSheet(5678912035)
+}
+
+struct InnerHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
 }

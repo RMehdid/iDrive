@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042157372B4E8B1D0087733C /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042157362B4E8B1D0087733C /* BottomSheet.swift */; };
+		0421573A2B4E8B630087733C /* BottomSheetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042157392B4E8B630087733C /* BottomSheetModel.swift */; };
 		992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308F52B4361FC0091AE14 /* NetworkManager.swift */; };
 		992308F92B4362460091AE14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 992308F82B4362460091AE14 /* Alamofire */; };
 		992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FA2B43661F0091AE14 /* CarRepo.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		042157362B4E8B1D0087733C /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		042157392B4E8B630087733C /* BottomSheetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetModel.swift; sourceTree = "<group>"; };
 		992308F52B4361FC0091AE14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		992308FA2B43661F0091AE14 /* CarRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepo.swift; sourceTree = "<group>"; };
 		992308FC2B43F7480091AE14 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042157382B4E8B220087733C /* BotomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				042157362B4E8B1D0087733C /* BottomSheet.swift */,
+				042157392B4E8B630087733C /* BottomSheetModel.swift */,
+			);
+			path = BotomSheet;
+			sourceTree = "<group>";
+		};
 		992308F42B4361EE0091AE14 /* Repos */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +205,7 @@
 				9958FEB02B35923500D5B370 /* CarDetails */,
 				995FB14B2B4AC9C4004B4B4D /* Packages */,
 				995FB14E2B4ACBCD004B4B4D /* DatePicker */,
+				042157382B4E8B220087733C /* BotomSheet */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +351,7 @@
 				99D761E82B363A1A00695854 /* Package.swift in Sources */,
 				99D761F12B37511E00695854 /* CarDetailsViewModel.swift in Sources */,
 				995FB14A2B4AC9B4004B4B4D /* PackagesSheet.swift in Sources */,
+				0421573A2B4E8B630087733C /* BottomSheetModel.swift in Sources */,
 				99D761E22B361ABC00695854 /* Transmission.swift in Sources */,
 				99D761EF2B374FBF00695854 /* Pricing.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
@@ -355,6 +370,7 @@
 				992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */,
 				9958FEAB2B3590E100D5B370 /* User.swift in Sources */,
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
+				042157372B4E8B1D0087733C /* BottomSheet.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,
 				99D761ED2B36FC2A00695854 /* Date.swift in Sources */,
 				992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */,
