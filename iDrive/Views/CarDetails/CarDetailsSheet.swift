@@ -44,16 +44,16 @@ struct CarDetailsSheet: View {
         .sheet(item: $showSheet) { car in
             PackagesSheet(for: car)
                 .padding()
-                .overlay {
-                    GeometryReader { geometry in
-                        Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
-                    }
-                }
-                .onPreferenceChange(InnerHeightPreferenceKey.self) { newHeight in
-                    sheetHeight = newHeight
-                }
                 .presentationDetents([.height(sheetHeight)])
                 .presentationBackground(.ultraThinMaterial)
+                .overlay {
+                    GeometryReader { geometry in
+                        Color.clear.preference(key: PackageSheetPreferenceKey.self, value: geometry.size.height)
+                    }
+                }
+                .onPreferenceChange(PackageSheetPreferenceKey.self) { newHeight in
+                    sheetHeight = newHeight
+                }
         }
     }
     
@@ -190,7 +190,7 @@ struct CarDetailsSheet: View {
     CarDetailsSheet(5678912035)
 }
 
-struct InnerHeightPreferenceKey: PreferenceKey {
+struct PackageSheetPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = .zero
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
         value = nextValue()

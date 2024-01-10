@@ -12,6 +12,7 @@ struct PackagesSheet: View {
     let car: Car
     
     @State private var showSheet: Package?
+    @State private var sheetHeight: CGFloat = .zero
     
     init(for car: Car) {
         self.car = car
@@ -26,11 +27,23 @@ struct PackagesSheet: View {
             
             ForEach(car.packages) { packageBuilder($0) }
         }
+        .presentationDetents([showSheet == nil ? .large : .height(0)])
         .sheet(item: $showSheet) { package in
             DatePickerSheet(using: package) { pickup, dropOff in
                 print("pickup: " + pickup.description)
                 print("drop off: " + dropOff.description)
             }
+            .padding()
+            .overlay {
+                GeometryReader { geometry in
+                    Color.clear.preference(key: DatePickerSheetPreferenceKey.self, value: geometry.size.height)
+                }
+            }
+            .onPreferenceChange(DatePickerSheetPreferenceKey.self) { newHeight in
+                sheetHeight = newHeight
+            }
+            .presentationDetents([.height(sheetHeight)])
+            .presentationBackground(.ultraThinMaterial)
         }
     }
     
@@ -58,5 +71,12 @@ struct PackagesSheet: View {
             .clipShape(.rect(cornerRadius: 8))
         }
         .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct DatePickerSheetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = .zero
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }

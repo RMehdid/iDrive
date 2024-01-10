@@ -26,12 +26,13 @@ struct DatePickerSheet: View {
     
     var body: some View {
         VStack{
-            VStack{
+            VStack(alignment: .leading, spacing: 24){
                 DatePicker("From", selection: $pickupDate)
             
-                VStack(alignment: .leading, spacing: 16){
+                VStack(alignment: .leading, spacing: 12){
                     Text("You will have to check out by:")
-                    Text(dropOffDate.getFormattedDate(format: "dd-mm-yyyy") + " at " + dropOffDate.getFormattedDate(format: "HH:MM"))
+                        .font(.system(size: 18, weight: .medium))
+                    Text(dropOffDate.getFormattedDate(format: "EEEE dd MMM yyyy") + " at " + dropOffDate.getFormattedDate(format: "HH:MM"))
                 }
             }
             .padding()
@@ -47,9 +48,6 @@ struct DatePickerSheet: View {
             .background(.ultraThinMaterial)
             .clipShape(.capsule)
         }
-        .padding()
-        .background(.ultraThickMaterial)
-        .clipShape(.rect(cornerRadius: 16))
     }
 }
 
