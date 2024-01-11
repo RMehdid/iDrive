@@ -21,7 +21,7 @@ extension BottomSheet {
         }
         
         func getUser() {
-            self.userUiState = .success(Client.sampleClient)
+            self.userUiState = .failure(.unAuthorized)
         }
         
         func getNearbyCars() {

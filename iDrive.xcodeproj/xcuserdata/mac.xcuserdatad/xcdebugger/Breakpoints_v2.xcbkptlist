@@ -49,6 +49,21 @@
                   endingLineNumber = "61"
                   offsetFromSymbolStart = "1856">
                </Location>
+               <Location
+                  uuid = "3877951D-5247-4FAD-B6D5-5532EDBD8A54 - 180714f4487a1ef3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; () in iDrive.NetworkManager.get&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(endpoint: Swift.String, query: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "iDrive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mac/Documents/GitHub/iDrive/iDrive/Managers/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "2104">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
