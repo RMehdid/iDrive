@@ -33,9 +33,13 @@ struct BottomSheet: View {
                                     .frame(width: 42, height: 42)
                             }
                     }
-                } else {
+                } else if case .failure(let error) = viewModel.userUiState, error == .unAuthorized {
                     Image(systemName: "person.crop.circle.fill.badge.plus")
                         .renderingMode(.template)
+                        .frame(width: 42, height: 42)
+                } else {
+                    Circle()
+                        .fill(Color.gray)
                         .frame(width: 42, height: 42)
                 }
             }
