@@ -37,7 +37,6 @@ struct CarDetailsSheet: View {
             }
             
         }
-        .presentationDetents([showSheet == nil ? .large : .height(0)])
         .onAppear {
             viewModel.getCarDetails(carId)
         }

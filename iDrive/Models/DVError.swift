@@ -11,6 +11,8 @@ enum DVError: Error {
     case timout
     case badUrl
     case badResponse
+    case badRequest
+    case unAuthorized
     case forbidden
     case unknown
 }

@@ -46,6 +46,10 @@ class NetworkManager {
                 switch status {
                 case 404:
                     continuation.resume(throwing: DVError.badUrl)
+                case 400:
+                    continuation.resume(throwing: DVError.badRequest)
+                case 401:
+                    continuation.resume(throwing: DVError.unAuthorized)
                 case 400...499:
                     continuation.resume(throwing: DVError.forbidden)
                 case 200...299:

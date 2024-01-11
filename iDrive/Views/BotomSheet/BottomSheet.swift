@@ -34,9 +34,8 @@ struct BottomSheet: View {
                             }
                     }
                 } else {
-                    
-                    Circle()
-                        .fill(Color.gray)
+                    Image(systemName: "person.crop.circle.fill.badge.plus")
+                        .renderingMode(.template)
                         .frame(width: 42, height: 42)
                 }
             }
