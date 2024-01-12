@@ -10,6 +10,7 @@
 		042157372B4E8B1D0087733C /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042157362B4E8B1D0087733C /* BottomSheet.swift */; };
 		0421573A2B4E8B630087733C /* BottomSheetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042157392B4E8B630087733C /* BottomSheetModel.swift */; };
 		0421573C2B502AFD0087733C /* AuthenticateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421573B2B502AFD0087733C /* AuthenticateSheet.swift */; };
+		042157402B5193E70087733C /* ProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421573F2B5193E70087733C /* ProfileSheet.swift */; };
 		992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308F52B4361FC0091AE14 /* NetworkManager.swift */; };
 		992308F92B4362460091AE14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 992308F82B4362460091AE14 /* Alamofire */; };
 		992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FA2B43661F0091AE14 /* CarRepo.swift */; };
@@ -47,6 +48,7 @@
 		042157362B4E8B1D0087733C /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		042157392B4E8B630087733C /* BottomSheetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetModel.swift; sourceTree = "<group>"; };
 		0421573B2B502AFD0087733C /* AuthenticateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateSheet.swift; sourceTree = "<group>"; };
+		0421573F2B5193E70087733C /* ProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheet.swift; sourceTree = "<group>"; };
 		992308F52B4361FC0091AE14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		992308FA2B43661F0091AE14 /* CarRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepo.swift; sourceTree = "<group>"; };
 		992308FC2B43F7480091AE14 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
@@ -99,9 +101,25 @@
 			children = (
 				042157362B4E8B1D0087733C /* BottomSheet.swift */,
 				042157392B4E8B630087733C /* BottomSheetModel.swift */,
-				0421573B2B502AFD0087733C /* AuthenticateSheet.swift */,
+				0421573D2B5193C80087733C /* Auth */,
 			);
 			path = BotomSheet;
+			sourceTree = "<group>";
+		};
+		0421573D2B5193C80087733C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0421573B2B502AFD0087733C /* AuthenticateSheet.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0421573E2B5193CF0087733C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0421573F2B5193E70087733C /* ProfileSheet.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		992308F42B4361EE0091AE14 /* Repos */ = {
@@ -204,6 +222,7 @@
 		9958FE9A2B34B66D00D5B370 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0421573E2B5193CF0087733C /* Profile */,
 				9958FE9B2B34B67600D5B370 /* Home */,
 				9958FEB02B35923500D5B370 /* CarDetails */,
 				995FB14B2B4AC9C4004B4B4D /* Packages */,
@@ -371,6 +390,7 @@
 				9958FE972B348FA600D5B370 /* Double.swift in Sources */,
 				9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */,
 				99D761E42B361B0300695854 /* Engine.swift in Sources */,
+				042157402B5193E70087733C /* ProfileSheet.swift in Sources */,
 				992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */,
 				9958FEAB2B3590E100D5B370 /* User.swift in Sources */,
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
