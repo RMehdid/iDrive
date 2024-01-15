@@ -96,14 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		042157382B4E8B220087733C /* BotomSheet */ = {
+		042157382B4E8B220087733C /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
 				042157362B4E8B1D0087733C /* BottomSheet.swift */,
 				042157392B4E8B630087733C /* BottomSheetModel.swift */,
 				0421573D2B5193C80087733C /* Auth */,
 			);
-			path = BotomSheet;
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		0421573D2B5193C80087733C /* Auth */ = {
@@ -224,10 +224,10 @@
 			children = (
 				0421573E2B5193CF0087733C /* Profile */,
 				9958FE9B2B34B67600D5B370 /* Home */,
+				042157382B4E8B220087733C /* BottomSheet */,
 				9958FEB02B35923500D5B370 /* CarDetails */,
 				995FB14B2B4AC9C4004B4B4D /* Packages */,
 				995FB14E2B4ACBCD004B4B4D /* DatePicker */,
-				042157382B4E8B220087733C /* BotomSheet */,
 			);
 			path = Views;
 			sourceTree = "<group>";

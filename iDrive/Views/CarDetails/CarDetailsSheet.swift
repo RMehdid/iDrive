@@ -96,7 +96,7 @@ struct CarDetailsSheet: View {
         }
         .padding(.top, 68)
         .padding()
-        .background(.ultraThickMaterial)
+        .background(Color.white.opacity(0.4))
         .clipShape(.rect(cornerRadius: 16))
         .overlay(alignment: .top) {
             Image(car.imageUrl)
@@ -170,7 +170,7 @@ struct CarDetailsSheet: View {
         HStack(spacing: 16){
             Image(systemName: image)
                 .padding()
-                .background(.ultraThinMaterial)
+                .background(.white.opacity(0.8))
                 .clipShape(.circle)
                 .frame(width: 42, height: 42)
             VStack(alignment: .leading){

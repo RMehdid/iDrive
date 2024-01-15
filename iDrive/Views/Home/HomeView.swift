@@ -35,10 +35,11 @@ struct HomeView: View {
             GeometryReader { geometry in
                 BottomSheet()
                     .presentationDetents([.medium, .large, .height(geometry.safeAreaInsets.bottom + 32)])
-                    .presentationBackgroundInteraction(.enabled)
-                    .presentationBackground(.ultraThinMaterial)
-                    .interactiveDismissDisabled()
+                    
             }
+            .interactiveDismissDisabled()
+            .presentationBackground(.ultraThinMaterial)
+            .presentationBackgroundInteraction(.enabled)
         }
     }
 }
