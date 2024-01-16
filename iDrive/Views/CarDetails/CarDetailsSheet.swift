@@ -30,7 +30,6 @@ struct CarDetailsSheet: View {
             case .success(let car):
                 carDetailsCard(car)
                 ownerDetails(car.owner)
-                
                 bookCard(car)
             case .failure(let error):
                 EmptyView()
