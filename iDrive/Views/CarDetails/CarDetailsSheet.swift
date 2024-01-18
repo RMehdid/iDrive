@@ -95,7 +95,7 @@ struct CarDetailsSheet: View {
         }
         .padding(.top, 68)
         .padding()
-        .background(Color.white.opacity(0.4))
+        .background(.ultraThinMaterial)
         .clipShape(.rect(cornerRadius: 16))
         .overlay(alignment: .top) {
             Image(car.imageUrl)
@@ -129,7 +129,7 @@ struct CarDetailsSheet: View {
             }
         }
         .padding()
-        .background(.ultraThickMaterial)
+        .background(.ultraThinMaterial)
         .clipShape(.rect(cornerRadius: 16))
     }
     
@@ -159,7 +159,7 @@ struct CarDetailsSheet: View {
                 .buttonStyle(PlainButtonStyle())
             }
             .padding()
-            .background(.ultraThickMaterial)
+            .background(.ultraThinMaterial)
             .clipShape(.rect(cornerRadius: 16))
         }
     }
@@ -169,7 +169,7 @@ struct CarDetailsSheet: View {
         HStack(spacing: 16){
             Image(systemName: image)
                 .padding()
-                .background(.white.opacity(0.8))
+                .background(.ultraThickMaterial)
                 .clipShape(.circle)
                 .frame(width: 42, height: 42)
             VStack(alignment: .leading){

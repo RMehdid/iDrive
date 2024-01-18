@@ -78,7 +78,6 @@ struct BottomSheet: View {
                 CarDetailsSheet(car.id)
             }
             .padding()
-            .presentationBackground(.ultraThinMaterial)
         }
     }
     
