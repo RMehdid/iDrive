@@ -15,6 +15,9 @@ struct BottomSheet: View {
     
     @State private var selectedCar: SimpleCar? = nil
     
+    @State private var isLoggingIn = false
+    @State private var isSigningUp = false
+    
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 16){
@@ -34,10 +37,15 @@ struct BottomSheet: View {
                             }
                     }
                 } else if case .failure(let error) = viewModel.userUiState, error == .unAuthorized {
-                    Image(systemName: "person.crop.circle.fill.badge.plus")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 42, height: 36)
+                    Button {
+                        self.isLoggingIn = true
+                    } label: {
+                        Image(systemName: "person.crop.circle.fill.badge.plus")
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 42, height: 36)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 } else {
                     Circle()
                         .fill(Color.gray)
@@ -78,6 +86,14 @@ struct BottomSheet: View {
                 CarDetailsSheet(car.id)
             }
             .padding()
+        }
+        .fullScreenCover(isPresented: $isLoggingIn) {
+            LoginView {
+                self.isSigningUp = true
+            }
+        }
+        .fullScreenCover(isPresented: $isSigningUp) {
+            SignUpView()
         }
     }
     
