@@ -19,6 +19,8 @@ struct LoginView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @StateObject private var viewModel = ViewModel()
+    
     @State private var id: String = ""
     @State private var phone: String = ""
     
@@ -71,7 +73,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                
+                viewModel.loginWithIdAndPhone(id: self.id, phone: self.phone)
             } label: {
                 Text("Login")
             }
@@ -116,6 +118,7 @@ struct LoginView: View {
     private func labelBuilder(for provider: Provider) -> some View {
         Button {
             // open sdk to authenticate, when work is done, redirect to fill necissary informations on signup
+            viewModel.loginWithProvider(provider)
         } label: {
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 60, height: 40)

@@ -11,6 +11,8 @@ struct SignUpView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @StateObject private var viewModel = ViewModel()
+    
     @State private var id: String = ""
     @State private var phone: String = ""
     
@@ -52,7 +54,7 @@ struct SignUpView: View {
             Spacer()
             
             Button {
-                
+                viewModel.signup(id: self.id, phone: self.phone)
             } label: {
                 Text("Sign up")
             }
