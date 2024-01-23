@@ -86,6 +86,14 @@ struct BottomSheet: View {
                 CarDetailsSheet(car.id)
             }
             .padding()
+            .presentationBackground {
+                Image("backgroundPattern")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .opacity(0.1)
+                    .background(Color.black.gradient)
+            }
         }
         .fullScreenCover(isPresented: $isLoggingIn) {
             LoginView {

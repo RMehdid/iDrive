@@ -10,8 +10,11 @@ import Foundation
 extension LoginView {
     @MainActor class ViewModel: ObservableObject {
         
-        func loginWithIdAndPhone(id: String, phone: String) {
+        func loginWithIdAndPhone(id: String, phone: String, finished: () -> Void) {
+            // get user from auth
             
+//            let user = Client.sampleClient
+            finished()
         }
         
         func loginWithProvider(_ provider: Provider) {

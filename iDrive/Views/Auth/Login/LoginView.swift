@@ -73,7 +73,9 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                viewModel.loginWithIdAndPhone(id: self.id, phone: self.phone)
+                viewModel.loginWithIdAndPhone(id: self.id, phone: self.phone) {
+                    dismiss()
+                }
             } label: {
                 Text("Login")
             }

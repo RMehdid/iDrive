@@ -34,7 +34,6 @@ struct CarDetailsSheet: View {
             case .failure(let error):
                 EmptyView()
             }
-            
         }
         .onAppear {
             viewModel.getCarDetails(carId)

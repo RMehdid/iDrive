@@ -12,7 +12,7 @@ struct HomeView: View {
     
     @StateObject private var locationManager = LocationManager.shared
     
-    @State private var position: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
+    @State private var position: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
     
     @Namespace private var locationSpace
     
@@ -35,10 +35,10 @@ struct HomeView: View {
             GeometryReader { geometry in
                 BottomSheet()
                     .presentationDetents([.medium, .large, .height(geometry.safeAreaInsets.bottom + 32)])
+                    .presentationBackground(.ultraThinMaterial)
                     
             }
             .interactiveDismissDisabled()
-            .presentationBackground(.ultraThinMaterial)
             .presentationBackgroundInteraction(.enabled)
         }
     }
