@@ -124,12 +124,36 @@
 		042157462B5E913B0087733C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				0459CDD22B5FD27E001C17CB /* Login */,
+				0459CDD32B5FD284001C17CB /* SignUp */,
+				0459CDD42B5FD291001C17CB /* Components */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0459CDD22B5FD27E001C17CB /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				042157442B5E91350087733C /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0459CDD32B5FD284001C17CB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
 				0421574B2B5EBA8D0087733C /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0459CDD42B5FD291001C17CB /* Components */ = {
+			isa = PBXGroup;
+			children = (
 				042157472B5EA9870087733C /* AuthTextField.swift */,
 				042157492B5EAAF10087733C /* AuthButton.swift */,
 			);
-			path = Auth;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		992308F42B4361EE0091AE14 /* Repos */ = {
