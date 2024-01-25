@@ -15,8 +15,16 @@ class User: Decodable, Identifiable {
     private(set) var phone: String
     private(set) var profileImageUrl: String?
     private(set) var rating: Double
-    
-    init(id: Int, firstname: String, lastname: String, email: String? = nil, phone: String, profileImageUrl: String? = nil, rating: Double) {
+
+    init(
+        id: Int,
+        firstname: String,
+        lastname: String,
+        email: String? = nil,
+        phone: String,
+        profileImageUrl: String? = nil,
+        rating: Double
+    ) {
         self.id = id
         self.firstname = firstname
         self.lastname = lastname
@@ -25,12 +33,12 @@ class User: Decodable, Identifiable {
         self.profileImageUrl = profileImageUrl
         self.rating = rating
     }
-    
+
     var namePlaceholderForImage: String {
         guard let lastnameLetter = lastname.first, let firstnameLetter = firstname.first else {
             return ""
         }
-        
+
         return lastnameLetter.uppercased() + firstnameLetter.lowercased()
     }
 }

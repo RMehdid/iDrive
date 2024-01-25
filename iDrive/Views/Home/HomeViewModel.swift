@@ -9,7 +9,6 @@ import Foundation
 
 extension HomeView {
     final class ViewModel: ObservableObject {
-        
-        
+
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 @main
+// swiftlint:disable type_name
 struct iDriveApp: App {
     var body: some Scene {
         WindowGroup {
@@ -18,3 +19,4 @@ struct iDriveApp: App {
         }
     }
 }
+// swiftlint:enable type_name

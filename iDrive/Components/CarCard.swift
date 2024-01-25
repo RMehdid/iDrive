@@ -10,15 +10,15 @@ import CoreLocation
 
 struct CarCard: View {
     let car: SimpleCar
-    
+
 //    let userLocation = LocationManager.shared.location
-    
+
     init(_ car: SimpleCar) {
         self.car = car
     }
-    
+
     var body: some View {
-        HStack{
+        HStack {
             Image("ic_car")
                 .resizable()
                 .renderingMode(.template)
@@ -26,17 +26,17 @@ struct CarCard: View {
                 .padding()
                 .background(.ultraThinMaterial)
                 .clipShape(.circle)
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Text(car.model + " - " + car.color)
                     .font(.system(size: 16, weight: .semibold))
                 Text(String(car.year))
                     .font(.system(size: 16, weight: .regular))
             }
-            
+
             Spacer()
-            
-            VStack(alignment: .trailing){
-                HStack{
+
+            VStack(alignment: .trailing) {
+                HStack {
                     Image(systemName: "star.fill")
                         .frame(width: 18, height: 18)
                     Text(car.rating.toString)

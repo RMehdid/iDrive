@@ -343,6 +343,7 @@
 				9958FE772B338C4C00D5B370 /* Sources */,
 				9958FE782B338C4C00D5B370 /* Frameworks */,
 				9958FE792B338C4C00D5B370 /* Resources */,
+				041831D72B624A4900D424A3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -403,6 +404,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		041831D72B624A4900D424A3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n    swiftlint --fix && swiftlint\nelse \n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9958FE772B338C4C00D5B370 /* Sources */ = {
@@ -579,6 +600,7 @@
 				DEVELOPMENT_TEAM = QH3T53K3KZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iDrive/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "iDrive is requesting your location to show you the nearest cars for you";
@@ -620,6 +642,7 @@
 				DEVELOPMENT_TEAM = QH3T53K3KZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iDrive/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "iDrive is requesting your location to show you the nearest cars for you";

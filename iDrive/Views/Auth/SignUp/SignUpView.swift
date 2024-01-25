@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
+
     @Environment(\.dismiss) var dismiss
-    
+
     @StateObject private var viewModel = ViewModel()
-    
+
     @State private var id: String = ""
     @State private var phone: String = ""
-    
+
     var body: some View {
-        VStack(spacing: 32){
-            HStack{
+        VStack(spacing: 32) {
+            HStack {
                 Button {
                     dismiss()
                 } label: {
-                    HStack{
+                    HStack {
                         Image(systemName: "chevron.backward")
                         Text("Back")
                     }
@@ -30,8 +30,8 @@ struct SignUpView: View {
                 .buttonStyle(PlainButtonStyle())
                 Spacer()
             }
-            
-            VStack(spacing: 18){
+
+            VStack(spacing: 18) {
                 TextField(
                     "",
                     text: $id,
@@ -40,7 +40,7 @@ struct SignUpView: View {
                         .foregroundStyle(Color("DVLightGray"))
                 )
                 .textFieldStyle(AuthTextField())
-                
+
                 TextField(
                     "",
                     text: $phone,
@@ -50,9 +50,9 @@ struct SignUpView: View {
                 )
                 .textFieldStyle(AuthTextField())
             }
-            
+
             Spacer()
-            
+
             Button {
                 viewModel.signup(id: self.id, phone: self.phone)
             } label: {

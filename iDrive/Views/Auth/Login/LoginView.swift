@@ -9,30 +9,30 @@ import SwiftUI
 
 enum Provider: String, CaseIterable, Identifiable {
     var id: UUID { UUID() }
-    
+
     case facebook
     case google
     case apple
 }
 
 struct LoginView: View {
-    
+
     @Environment(\.dismiss) var dismiss
-    
+
     @StateObject private var viewModel = ViewModel()
-    
+
     @State private var id: String = ""
     @State private var phone: String = ""
-    
+
     var signup: () -> Void
-    
+
     var body: some View {
-        VStack(spacing: 32){
-            HStack{
+        VStack(spacing: 32) {
+            HStack {
                 Button {
                     dismiss()
                 } label: {
-                    HStack{
+                    HStack {
                         Image(systemName: "chevron.backward")
                         Text("Back")
                     }
@@ -40,17 +40,17 @@ struct LoginView: View {
                 .buttonStyle(PlainButtonStyle())
                 Spacer()
             }
-            
+
             Spacer()
-            
+
             Image("Logo")
                 .resizable()
                 .frame(height: 176)
-            
+
             Spacer()
             Spacer()
-            
-            VStack(spacing: 18){
+
+            VStack(spacing: 18) {
                 TextField(
                     "",
                     text: $id,
@@ -59,7 +59,7 @@ struct LoginView: View {
                         .foregroundStyle(Color("DVLightGray"))
                 )
                 .textFieldStyle(AuthTextField())
-                
+
                 TextField(
                     "",
                     text: $phone,
@@ -69,9 +69,9 @@ struct LoginView: View {
                 )
                 .textFieldStyle(AuthTextField())
             }
-            
+
             Spacer()
-            
+
             Button {
                 viewModel.loginWithIdAndPhone(id: self.id, phone: self.phone) {
                     dismiss()
@@ -80,7 +80,7 @@ struct LoginView: View {
                 Text("Login")
             }
             .buttonStyle(AuthButtonStyle())
-            
+
             HStack {
                 Divider()
                     .frame(height: 1)
@@ -94,13 +94,13 @@ struct LoginView: View {
                         Color.white
                     }
             }
-            
-            HStack(spacing: 28){
+
+            HStack(spacing: 28) {
                 ForEach(Provider.allCases) {
                     labelBuilder(for: $0)
                 }
             }
-            
+
             Spacer()
             Spacer()
         }
@@ -115,7 +115,7 @@ struct LoginView: View {
         }
         .background(.black.gradient)
     }
-    
+
     @ViewBuilder
     private func labelBuilder(for provider: Provider) -> some View {
         Button {
@@ -135,6 +135,6 @@ struct LoginView: View {
 
 #Preview {
     LoginView {
-        
+
     }
 }

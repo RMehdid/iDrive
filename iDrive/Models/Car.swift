@@ -23,7 +23,7 @@ struct Car: Decodable, Identifiable {
     let color: String
     let isFreeCancelation: Bool
     let packages: [Package]
-    
+
     var location: CLLocation? {
         guard let latitude = coordinates?.latitude,
               let longitude = coordinates?.longitude else {
@@ -31,12 +31,12 @@ struct Car: Decodable, Identifiable {
               }
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
+
     func distance(userLocation: CLLocation) -> Double? {
         guard let location = location else {
             return nil
         }
-        
+
         return location.distance(from: userLocation)
     }
 }

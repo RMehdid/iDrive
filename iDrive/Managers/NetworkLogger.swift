@@ -9,13 +9,13 @@ import Foundation
 import Alamofire
 
 class NetworkLogger: EventMonitor {
-  //1
+  // 1
   let queue = DispatchQueue(label: "com.raynmore.networklogger")
-  //2
+  // 2
   func requestDidFinish(_ request: Request) {
     print(request.description)
   }
-  //3
+  // 3
   func request<Value>(
     _ request: DataRequest,
     didParseResponse response: DataResponse<Value, AFError>

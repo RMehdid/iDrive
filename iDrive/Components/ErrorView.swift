@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ErrorView: View {
-    
+
     let error: DVError
-    
+
     init(_ error: DVError) {
         self.error = error
     }
-    
+
     var body: some View {
         VStack {
             switch error {

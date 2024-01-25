@@ -9,9 +9,9 @@ import Foundation
 
 extension SignUpView {
     @MainActor class ViewModel: ObservableObject {
-        
+
         func signup(id: String, phone: String) {
-            
+
         }
     }
 }

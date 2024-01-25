@@ -8,6 +8,12 @@
 import Foundation
 
 class Client: User {
-    
-    static let sampleClient = User(id: 0, firstname: "Samy Abderraouf", lastname: "Mehdid", phone: "+213540408051", rating: 3.9)
+
+    static let sampleClient = User(
+        id: 0,
+        firstname: "Samy Abderraouf",
+        lastname: "Mehdid",
+        phone: "+213540408051",
+        rating: 3.9
+    )
 }

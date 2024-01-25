@@ -14,7 +14,7 @@ extension Array where Element == Car {
             guard let location = car.location else {
                 return nil
             }
-            
+
             return MapMarker(coordinate: location.coordinate)
         }
     }

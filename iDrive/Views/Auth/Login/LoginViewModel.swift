@@ -9,14 +9,14 @@ import Foundation
 
 extension LoginView {
     @MainActor class ViewModel: ObservableObject {
-        
+
         func loginWithIdAndPhone(id: String, phone: String, finished: () -> Void) {
             // get user from auth
-            
+
 //            let user = Client.sampleClient
             finished()
         }
-        
+
         func loginWithProvider(_ provider: Provider) {
             switch provider {
             case .facebook:
@@ -27,17 +27,17 @@ extension LoginView {
                 self.loginWithApple()
             }
         }
-        
+
         private func loginWithFacebook() {
-            
+
         }
-        
+
         private func loginWithGoogle() {
-            
+
         }
-        
+
         private func loginWithApple() {
-            
+
         }
     }
 }

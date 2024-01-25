@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        HStack{
+        HStack {
             Spacer()
             configuration.label
                 .font(.system(size: 18, weight: .medium))
@@ -25,7 +25,7 @@ struct AuthButtonStyle: ButtonStyle {
 struct AuthButton_Previews: PreviewProvider {
     static var previews: some View {
         Button {
-            
+
         } label: {
             Text("Sign up")
         }

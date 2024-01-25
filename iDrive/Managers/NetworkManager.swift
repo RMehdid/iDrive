@@ -9,25 +9,23 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    
+
     let session = Session(eventMonitors: [NetworkLogger()])
-    
+
     private var headers: HTTPHeaders {
-        get {
-            return [
-                "Content-Type": "application/json",
-            ]
-        }
+        return [
+            "Content-Type": "application/json"
+        ]
     }
-    
+
     private var baseUrl: String {
         return Bundle.main.object(forInfoDictionaryKey: "BaseUrl") as? String ?? ""
     }
-    
+
     private let timout: Double = 15
-    
+
     public func get<Model: Decodable>(endpoint: String, query: [String: Any]? = nil) async throws -> Model {
-        
+
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
                 baseUrl + endpoint,
@@ -37,12 +35,12 @@ class NetworkManager {
                 requestModifier: { $0.timeoutInterval = self.timout }
             )
             .responseData { response in
-                
+
                 guard let status = response.response?.statusCode else {
                     continuation.resume(throwing: DVError.badResponse)
                     return
                 }
-                
+
                 switch status {
                 case 404:
                     continuation.resume(throwing: DVError.badUrl)
@@ -64,15 +62,15 @@ class NetworkManager {
                     case .failure(let error):
                         continuation.resume(throwing: error)
                     }
-                
+
                 default: continuation.resume(throwing: DVError.unknown)
                 }
             }
         }
     }
-    
+
     public func post(endpoint: String, body: [String: Any]) async throws {
-        
+
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
                 baseUrl + endpoint,
@@ -86,7 +84,7 @@ class NetworkManager {
                     continuation.resume(throwing: DVError.badResponse)
                     return
                 }
-                
+
                 switch status {
                 case 404:
                     continuation.resume(throwing: DVError.badUrl)
@@ -99,15 +97,15 @@ class NetworkManager {
                     case .failure:
                         continuation.resume(throwing: DVError.timout)
                     }
-                
+
                 default: continuation.resume(throwing: DVError.unknown)
                 }
             }
         }
     }
-    
+
     public func put(endpoint: String, body: [String: Any]? = nil) async throws {
-        
+
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
                 baseUrl + endpoint,
@@ -117,12 +115,12 @@ class NetworkManager {
                 requestModifier: { $0.timeoutInterval = self.timout }
             )
             .responseData { response in
-                
+
                 guard let status = response.response?.statusCode else {
                     continuation.resume(throwing: DVError.badResponse)
                     return
                 }
-                
+
                 switch status {
                 case 404:
                     continuation.resume(throwing: DVError.badUrl)
@@ -135,7 +133,7 @@ class NetworkManager {
                     case .failure:
                         continuation.resume(throwing: DVError.timout)
                     }
-                
+
                 default: continuation.resume(throwing: DVError.unknown)
                 }
             }

@@ -9,13 +9,13 @@ import SwiftUI
 import MapKit
 
 struct HomeView: View {
-    
+
     @StateObject private var locationManager = LocationManager.shared
-    
+
     @State private var position: MapCameraPosition = .userLocation(followsHeading: false, fallback: .automatic)
-    
+
     @Namespace private var locationSpace
-    
+
     var body: some View {
         Map(position: $position) {
             UserAnnotation()
@@ -36,7 +36,7 @@ struct HomeView: View {
                 BottomSheet()
                     .presentationDetents([.medium, .large, .height(geometry.safeAreaInsets.bottom + 32)])
                     .presentationBackground(.ultraThinMaterial)
-                    
+
             }
             .interactiveDismissDisabled()
             .presentationBackgroundInteraction(.enabled)

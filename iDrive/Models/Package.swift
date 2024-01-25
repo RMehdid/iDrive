@@ -14,7 +14,7 @@ struct Package: Decodable, Identifiable {
     let initialPeriod: Int
     let initialDistance: Int
     let pricing: Pricing
-    
+
     var imageName: String {
         return "building.2.crop.circle.fill"
     }
