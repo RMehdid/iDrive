@@ -10,10 +10,20 @@ import Foundation
 extension LoginView {
     @MainActor class ViewModel: ObservableObject {
 
-        func loginWithIdAndPhone(id: String, phone: String, finished: () -> Void) {
-            // get user from auth
+        @Published private var idUiState: UiState<Void> = .idle
+        @Published private var phoneUiState: UiState<Void> = .idle
 
-//            let user = Client.sampleClient
+        func loginWithIdAndPhone(id: String, phone: String, finished: () -> Void) {
+            Task {
+                guard let id = Int(id) else {
+                    self.idUiState = .failure(.custom("please enter your national id"))
+                    return
+                }
+
+                UserDefaults.standard.accessToken = try await LoginRepo.shared.login(id: id, phone: phone).token
+
+            }
+
             finished()
         }
 

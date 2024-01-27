@@ -33,6 +33,9 @@ struct ErrorView: View {
             case .unknown:
                 Image(systemName: "exclamationmark.triangle.fill")
                 Text("something went wrong")
+            case .custom(let message):
+                Image(systemName: "exclamationmark.triangle.fill")
+                Text(message)
             }
         }
     }

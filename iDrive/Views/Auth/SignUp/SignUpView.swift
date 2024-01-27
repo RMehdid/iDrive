@@ -14,6 +14,8 @@ struct SignUpView: View {
     @StateObject private var viewModel = ViewModel()
 
     @State private var id: String = ""
+    @State private var firstname: String = ""
+    @State private var lastname: String = ""
     @State private var phone: String = ""
 
     var body: some View {
@@ -43,6 +45,24 @@ struct SignUpView: View {
 
                 TextField(
                     "",
+                    text: $firstname,
+                    prompt:
+                        Text("Enter firstname")
+                        .foregroundStyle(Color("DVLightGray"))
+                )
+                .textFieldStyle(AuthTextField())
+
+                TextField(
+                    "",
+                    text: $lastname,
+                    prompt:
+                        Text("Enter lastname")
+                        .foregroundStyle(Color("DVLightGray"))
+                )
+                .textFieldStyle(AuthTextField())
+
+                TextField(
+                    "",
                     text: $phone,
                     prompt:
                         Text("Enter phone")
@@ -54,7 +74,9 @@ struct SignUpView: View {
             Spacer()
 
             Button {
-                viewModel.signup(id: self.id, phone: self.phone)
+                viewModel.signup(id: self.id, firstname: firstname, lastname: lastname, phone: self.phone) {
+                    dismiss()
+                }
             } label: {
                 Text("Sign up")
             }

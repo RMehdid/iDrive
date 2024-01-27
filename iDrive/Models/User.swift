@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User: Decodable, Identifiable {
+class User: Codable, Identifiable {
     private(set) var id: Int
     private(set) var firstname: String
     private(set) var lastname: String

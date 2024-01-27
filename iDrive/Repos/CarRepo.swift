@@ -13,6 +13,7 @@ class CarRepo: NetworkManager {
 
     enum Endpoints: String {
         case getCars = "/cars"
+        case favoriteCars = "/cars/favorites"
         case getCar = "/cars/{{car_id}}"
     }
 
@@ -24,6 +25,10 @@ class CarRepo: NetworkManager {
         }
 
         return try await self.get(endpoint: Endpoints.getCars.rawValue, query: query)
+    }
+
+    func getFavoriteCars() async throws -> [SimpleCar] {
+        return try await self.get(endpoint: Endpoints.getCars.rawValue)
     }
 
     func getCar(carId: Int) async throws -> Car {

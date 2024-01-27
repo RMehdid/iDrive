@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DVError: Error {
+enum DVError: Error, Equatable {
     case timout
     case badUrl
     case badResponse
@@ -15,4 +15,5 @@ enum DVError: Error {
     case unAuthorized
     case forbidden
     case unknown
+    case custom(String)
 }

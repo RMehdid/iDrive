@@ -17,6 +17,10 @@
 		0421574C2B5EBA8D0087733C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0421574B2B5EBA8D0087733C /* SignUpView.swift */; };
 		0459CDD62B5FD5AE001C17CB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459CDD52B5FD5AE001C17CB /* LoginViewModel.swift */; };
 		0459CDD82B5FD7BD001C17CB /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459CDD72B5FD7BD001C17CB /* SignUpViewModel.swift */; };
+		04714B342B65005A00CA97B9 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B332B65005A00CA97B9 /* UserDefaults.swift */; };
+		04714B362B6500BC00CA97B9 /* LoginRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B352B6500BC00CA97B9 /* LoginRepo.swift */; };
+		04714B382B65021E00CA97B9 /* TokenReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B372B65021E00CA97B9 /* TokenReponse.swift */; };
+		04714B3A2B6507A700CA97B9 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B392B6507A700CA97B9 /* Encodable.swift */; };
 		992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308F52B4361FC0091AE14 /* NetworkManager.swift */; };
 		992308F92B4362460091AE14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 992308F82B4362460091AE14 /* Alamofire */; };
 		992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FA2B43661F0091AE14 /* CarRepo.swift */; };
@@ -61,6 +65,10 @@
 		0421574B2B5EBA8D0087733C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		0459CDD52B5FD5AE001C17CB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0459CDD72B5FD7BD001C17CB /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		04714B332B65005A00CA97B9 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		04714B352B6500BC00CA97B9 /* LoginRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepo.swift; sourceTree = "<group>"; };
+		04714B372B65021E00CA97B9 /* TokenReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenReponse.swift; sourceTree = "<group>"; };
+		04714B392B6507A700CA97B9 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		992308F52B4361FC0091AE14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		992308FA2B43661F0091AE14 /* CarRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepo.swift; sourceTree = "<group>"; };
 		992308FC2B43F7480091AE14 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				992308FA2B43661F0091AE14 /* CarRepo.swift */,
+				04714B352B6500BC00CA97B9 /* LoginRepo.swift */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -228,6 +237,7 @@
 				99D761E32B361B0300695854 /* Engine.swift */,
 				99D761E72B363A1A00695854 /* Package.swift */,
 				99D761EE2B374FBF00695854 /* Pricing.swift */,
+				04714B372B65021E00CA97B9 /* TokenReponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,7 +254,6 @@
 		9958FE8F2B348D6400D5B370 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9958FEA32B34C0AB00D5B370 /* MapKit */,
 				9958FE942B348F7B00D5B370 /* Foundation */,
 			);
 			path = Extensions;
@@ -256,6 +265,8 @@
 				9958FE962B348FA600D5B370 /* Double.swift */,
 				9958FEA42B34C0C100D5B370 /* Array.swift */,
 				99D761EC2B36FC2A00695854 /* Date.swift */,
+				04714B332B65005A00CA97B9 /* UserDefaults.swift */,
+				04714B392B6507A700CA97B9 /* Encodable.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -289,13 +300,6 @@
 				9958FE9F2B34B6F900D5B370 /* UiState.swift */,
 			);
 			path = UiState;
-			sourceTree = "<group>";
-		};
-		9958FEA32B34C0AB00D5B370 /* MapKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapKit;
 			sourceTree = "<group>";
 		};
 		9958FEB02B35923500D5B370 /* CarDetails */ = {
@@ -432,6 +436,7 @@
 			files = (
 				9958FE812B338C4C00D5B370 /* HomeView.swift in Sources */,
 				0421574A2B5EAAF10087733C /* AuthButton.swift in Sources */,
+				04714B382B65021E00CA97B9 /* TokenReponse.swift in Sources */,
 				9958FEA52B34C0C100D5B370 /* Array.swift in Sources */,
 				9958FEBA2B35D99000D5B370 /* CarStatus.swift in Sources */,
 				99D761E82B363A1A00695854 /* Package.swift in Sources */,
@@ -447,6 +452,7 @@
 				9958FEB22B359A4400D5B370 /* EngineType.swift in Sources */,
 				042157452B5E91350087733C /* LoginView.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
+				04714B342B65005A00CA97B9 /* UserDefaults.swift in Sources */,
 				995FB14D2B4ACBC7004B4B4D /* DatePickerSheet.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
 				9958FEAD2B35919C00D5B370 /* Client.swift in Sources */,
@@ -454,6 +460,7 @@
 				992308FD2B43F7480091AE14 /* NetworkLogger.swift in Sources */,
 				9958FE972B348FA600D5B370 /* Double.swift in Sources */,
 				9958FEAF2B3591D400D5B370 /* Owner.swift in Sources */,
+				04714B362B6500BC00CA97B9 /* LoginRepo.swift in Sources */,
 				0459CDD82B5FD7BD001C17CB /* SignUpViewModel.swift in Sources */,
 				99D761E42B361B0300695854 /* Engine.swift in Sources */,
 				0421574C2B5EBA8D0087733C /* SignUpView.swift in Sources */,
@@ -464,6 +471,7 @@
 				9958FE992B348FBC00D5B370 /* CarCard.swift in Sources */,
 				042157372B4E8B1D0087733C /* BottomSheet.swift in Sources */,
 				9958FE932B348EE200D5B370 /* Coordinates.swift in Sources */,
+				04714B3A2B6507A700CA97B9 /* Encodable.swift in Sources */,
 				99D761ED2B36FC2A00695854 /* Date.swift in Sources */,
 				992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */,
 				9958FEA02B34B6F900D5B370 /* UiState.swift in Sources */,

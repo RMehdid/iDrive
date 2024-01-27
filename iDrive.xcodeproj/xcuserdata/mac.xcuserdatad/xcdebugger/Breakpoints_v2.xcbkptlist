@@ -14,10 +14,10 @@
             filePath = "iDrive/Managers/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "get(endpoint:query:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "3877951D-5247-4FAD-B6D5-5532EDBD8A54 - 180714f4487a1d50"

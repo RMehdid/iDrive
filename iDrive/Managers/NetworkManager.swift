@@ -14,7 +14,8 @@ class NetworkManager {
 
     private var headers: HTTPHeaders {
         return [
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer \(UserDefaults.standard.accessToken ?? "")"
         ]
     }
 
