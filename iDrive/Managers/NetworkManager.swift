@@ -70,13 +70,14 @@ class NetworkManager {
         }
     }
 
-    public func post(endpoint: String, body: [String: Any]) async throws {
+    public func post<Model: Decodable>(endpoint: String, body: [String: Any]) async throws -> Model {
 
         return try await withCheckedThrowingContinuation { continuation in
             session.request(
                 baseUrl + endpoint,
                 method: .post,
                 parameters: body,
+                encoding: URLEncoding.httpBody,
                 headers: headers,
                 requestModifier: { $0.timeoutInterval = self.timout }
             )
@@ -93,8 +94,13 @@ class NetworkManager {
                     continuation.resume(throwing: DVError.forbidden)
                 case 200...299:
                     switch response.result {
-                    case .success:
-                        continuation.resume()
+                    case .success(let res):
+                        do {
+                            let decodedModel = try JSONDecoder().decode(Model.self, from: res)
+                            continuation.resume(returning: decodedModel)
+                        } catch {
+                            continuation.resume(throwing: error)
+                        }
                     case .failure:
                         continuation.resume(throwing: DVError.timout)
                     }

@@ -8,49 +8,71 @@
 import Foundation
 
 extension BottomSheet {
-    class ViewModel: ObservableObject {
+    @MainActor class ViewModel: ObservableObject {
 
         @Published private(set) var nearbyCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var favoritesCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var recentCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var searchCarsUiState: UiState<[SimpleCar]> = .idle
-        @Published private(set) var userUiState: UiState<User> = .idle
+        @Published private(set) var userUiState: UiState<User> = .idle {
+            willSet {
+                guard case .success = newValue else {
+                    return
+                }
+
+                self.loadCars()
+            }
+        }
 
         init() {
-            self.getUser()
+            if nil != UserDefaults.standard.accessToken {
+                self.getUser()
+            }
+        }
+
+        func loadCars() {
+            guard case .success = userUiState else {
+                return
+            }
+
+            self.getFavoritesCars()
+            self.getRecentCars()
+            self.getNearbyCars()
         }
 
         func getUser() {
-            self.userUiState = .failure(.unAuthorized)
+            self.userUiState = .loading
+
+            Task {
+                do {
+                    self.userUiState = .success(try await UserRepo.shared.getMe())
+                } catch {
+                    self.userUiState = .failure(.unAuthorized)
+                }
+            }
         }
 
-        func getNearbyCars() {
+        private func getNearbyCars() {
             self.nearbyCarsUiState = .loading
 
             Task {
-                DispatchQueue.main.async {
-//                    self.nearbyCarsUiState = .success(Car.sampleCars)
-                }
+                //                    self.nearbyCarsUiState = .success(Car.sampleCars)
             }
         }
 
-        func getFavoritesCars() {
+        private func getFavoritesCars() {
             self.favoritesCarsUiState = .loading
 
             Task {
-                DispatchQueue.main.async {
-//                    self.favoritesCarsUiState = .success(Car.sampleCars)
-                }
+                self.favoritesCarsUiState = .success(try await CarRepo.shared.getFavoriteCars())
             }
         }
 
-        func getRecentCars() {
+        private func getRecentCars() {
             self.recentCarsUiState = .loading
 
             Task {
-                DispatchQueue.main.async {
-//                    self.recentCarsUiState = .success(Car.sampleCars)
-                }
+                self.recentCarsUiState = .success(try await CarRepo.shared.getRecentCars())
             }
         }
 
@@ -61,13 +83,9 @@ extension BottomSheet {
                 do {
                     let cars = try await CarRepo.shared.getCars(searchText: query)
 
-                    DispatchQueue.main.async {
-                        self.searchCarsUiState = .success(cars)
-                    }
+                    self.searchCarsUiState = .success(cars)
                 } catch {
-                    DispatchQueue.main.async {
-                        self.searchCarsUiState = .failure(error as? DVError)
-                    }
+                    self.searchCarsUiState = .failure(error as? DVError)
                 }
             }
         }

@@ -12,9 +12,10 @@ class CarRepo: NetworkManager {
     static let shared = CarRepo()
 
     enum Endpoints: String {
-        case getCars = "/cars"
+        case all = "/cars"
         case favoriteCars = "/cars/favorites"
-        case getCar = "/cars/{{car_id}}"
+        case recentCars = "cars/recent"
+        case car = "/cars/{{car_id}}"
     }
 
     func getCars(searchText: String? = nil) async throws -> [SimpleCar] {
@@ -24,17 +25,21 @@ class CarRepo: NetworkManager {
             query["query"] = searchText
         }
 
-        return try await self.get(endpoint: Endpoints.getCars.rawValue, query: query)
+        return try await self.get(endpoint: Endpoints.all.rawValue, query: query)
     }
 
     func getFavoriteCars() async throws -> [SimpleCar] {
-        return try await self.get(endpoint: Endpoints.getCars.rawValue)
+        return try await self.get(endpoint: Endpoints.favoriteCars.rawValue)
+    }
+
+    func getRecentCars() async throws -> [SimpleCar] {
+        return try await self.get(endpoint: Endpoints.recentCars.rawValue)
     }
 
     func getCar(carId: Int) async throws -> Car {
         return try await self.get(
             endpoint: Endpoints
-                .getCar
+                .car
                 .rawValue
                 .replacingOccurrences(
                     of: "{{car_id}}",

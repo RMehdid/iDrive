@@ -21,6 +21,8 @@
 		04714B362B6500BC00CA97B9 /* LoginRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B352B6500BC00CA97B9 /* LoginRepo.swift */; };
 		04714B382B65021E00CA97B9 /* TokenReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B372B65021E00CA97B9 /* TokenReponse.swift */; };
 		04714B3A2B6507A700CA97B9 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B392B6507A700CA97B9 /* Encodable.swift */; };
+		04714B3C2B65190A00CA97B9 /* UserRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B3B2B65190A00CA97B9 /* UserRepo.swift */; };
+		04714B3E2B65513F00CA97B9 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04714B3D2B65513E00CA97B9 /* LoginCredentials.swift */; };
 		992308F62B4361FC0091AE14 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308F52B4361FC0091AE14 /* NetworkManager.swift */; };
 		992308F92B4362460091AE14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 992308F82B4362460091AE14 /* Alamofire */; };
 		992308FB2B43661F0091AE14 /* CarRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992308FA2B43661F0091AE14 /* CarRepo.swift */; };
@@ -69,6 +71,8 @@
 		04714B352B6500BC00CA97B9 /* LoginRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepo.swift; sourceTree = "<group>"; };
 		04714B372B65021E00CA97B9 /* TokenReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenReponse.swift; sourceTree = "<group>"; };
 		04714B392B6507A700CA97B9 /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		04714B3B2B65190A00CA97B9 /* UserRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepo.swift; sourceTree = "<group>"; };
+		04714B3D2B65513E00CA97B9 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		992308F52B4361FC0091AE14 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		992308FA2B43661F0091AE14 /* CarRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRepo.swift; sourceTree = "<group>"; };
 		992308FC2B43F7480091AE14 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 			children = (
 				992308FA2B43661F0091AE14 /* CarRepo.swift */,
 				04714B352B6500BC00CA97B9 /* LoginRepo.swift */,
+				04714B3B2B65190A00CA97B9 /* UserRepo.swift */,
 			);
 			path = Repos;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				99D761E72B363A1A00695854 /* Package.swift */,
 				99D761EE2B374FBF00695854 /* Pricing.swift */,
 				04714B372B65021E00CA97B9 /* TokenReponse.swift */,
+				04714B3D2B65513E00CA97B9 /* LoginCredentials.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 				0421573A2B4E8B630087733C /* BottomSheetModel.swift in Sources */,
 				99D761E22B361ABC00695854 /* Transmission.swift in Sources */,
 				99D761EF2B374FBF00695854 /* Pricing.swift in Sources */,
+				04714B3C2B65190A00CA97B9 /* UserRepo.swift in Sources */,
 				9958FEA22B34B74D00D5B370 /* DVError.swift in Sources */,
 				042157432B5E87F10087733C /* ErrorView.swift in Sources */,
 				9958FEA92B34F9F900D5B370 /* CarDetailsSheet.swift in Sources */,
@@ -453,6 +460,7 @@
 				042157452B5E91350087733C /* LoginView.swift in Sources */,
 				9958FE7F2B338C4C00D5B370 /* iDriveApp.swift in Sources */,
 				04714B342B65005A00CA97B9 /* UserDefaults.swift in Sources */,
+				04714B3E2B65513F00CA97B9 /* LoginCredentials.swift in Sources */,
 				995FB14D2B4ACBC7004B4B4D /* DatePickerSheet.swift in Sources */,
 				9958FE9D2B34B68600D5B370 /* HomeViewModel.swift in Sources */,
 				9958FEAD2B35919C00D5B370 /* Client.swift in Sources */,

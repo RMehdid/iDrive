@@ -76,9 +76,6 @@ struct BottomSheet: View {
         }
         .padding(.horizontal)
         .padding(.top)
-        .onAppear(perform: viewModel.getNearbyCars)
-        .onAppear(perform: viewModel.getFavoritesCars)
-        .onAppear(perform: viewModel.getRecentCars)
         .onChange(of: searchText, perform: viewModel.searchCars)
         .sheet(item: $selectedCar) { car in
             VStack {
@@ -99,9 +96,15 @@ struct BottomSheet: View {
             LoginView {
                 self.isSigningUp = true
             }
+            .onDisappear {
+                viewModel.getUser()
+            }
         }
         .fullScreenCover(isPresented: $isSigningUp) {
             SignUpView()
+                .onDisappear {
+                    viewModel.getUser()
+                }
         }
     }
 

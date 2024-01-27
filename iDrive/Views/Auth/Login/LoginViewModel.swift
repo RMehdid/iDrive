@@ -13,18 +13,21 @@ extension LoginView {
         @Published private var idUiState: UiState<Void> = .idle
         @Published private var phoneUiState: UiState<Void> = .idle
 
-        func loginWithIdAndPhone(id: String, phone: String, finished: () -> Void) {
+        func loginWithIdAndPhone(id: String, phone: String, finished: @escaping () -> Void) {
             Task {
                 guard let id = Int(id) else {
                     self.idUiState = .failure(.custom("please enter your national id"))
                     return
                 }
 
-                UserDefaults.standard.accessToken = try await LoginRepo.shared.login(id: id, phone: phone).token
+                do {
+                    UserDefaults.standard.accessToken = try await LoginRepo.shared.login(LoginCredentials(id: id, phone: phone)).token
+                    finished()
+                } catch {
+
+                }
 
             }
-
-            finished()
         }
 
         func loginWithProvider(_ provider: Provider) {
