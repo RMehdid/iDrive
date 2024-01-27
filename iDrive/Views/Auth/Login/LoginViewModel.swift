@@ -21,7 +21,12 @@ extension LoginView {
                 }
 
                 do {
-                    UserDefaults.standard.accessToken = try await LoginRepo.shared.login(LoginCredentials(id: id, phone: phone)).token
+                    UserDefaults.standard.accessToken = try await LoginRepo.shared.login(
+                        LoginCredentials(
+                            id: id,
+                            phone: phone
+                        )
+                    ).token
                     finished()
                 } catch {
 

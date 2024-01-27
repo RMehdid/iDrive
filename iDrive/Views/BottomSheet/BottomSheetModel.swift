@@ -14,19 +14,13 @@ extension BottomSheet {
         @Published private(set) var favoritesCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var recentCarsUiState: UiState<[SimpleCar]> = .idle
         @Published private(set) var searchCarsUiState: UiState<[SimpleCar]> = .idle
-        @Published private(set) var userUiState: UiState<User> = .idle {
-            willSet {
-                guard case .success = newValue else {
-                    return
-                }
-
-                self.loadCars()
-            }
-        }
+        @Published private(set) var userUiState: UiState<User> = .idle
 
         init() {
             if nil != UserDefaults.standard.accessToken {
                 self.getUser()
+            } else {
+                self.userUiState = .failure(.unAuthorized)
             }
         }
 
@@ -46,6 +40,7 @@ extension BottomSheet {
             Task {
                 do {
                     self.userUiState = .success(try await UserRepo.shared.getMe())
+                    self.loadCars()
                 } catch {
                     self.userUiState = .failure(.unAuthorized)
                 }

@@ -18,11 +18,16 @@ class LoginRepo: NetworkManager {
 
     func login(_ credentials: LoginCredentials) async throws -> TokenReponse {
 
-        return try await self.post(endpoint: Endpoints.login.rawValue, body: credentials.dictionary)
+        let query: [String: Any] = [
+            "id": credentials.id,
+            "phone": credentials.phone
+        ]
+
+        return try await self.post(endpoint: Endpoints.login.rawValue, body: query)
     }
 
     func signUp(user: Client) async throws -> TokenReponse {
 
-        return try await self.post(endpoint: Endpoints.login.rawValue, body: user.dictionary)
+        return try await self.post(endpoint: Endpoints.login.rawValue, body: [:])
     }
 }

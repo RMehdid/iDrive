@@ -73,14 +73,26 @@ class NetworkManager {
     public func post<Model: Decodable>(endpoint: String, body: [String: Any]) async throws -> Model {
 
         return try await withCheckedThrowingContinuation { continuation in
-            session.request(
-                baseUrl + endpoint,
-                method: .post,
-                parameters: body,
-                encoding: URLEncoding.httpBody,
-                headers: headers,
-                requestModifier: { $0.timeoutInterval = self.timout }
-            )
+            let jsonBody: Data
+            do {
+                jsonBody = try JSONSerialization.data(withJSONObject: body, options: [])
+            } catch {
+                continuation.resume(throwing: error)
+                return
+            }
+
+            guard let url = URL(string: baseUrl + endpoint) else {
+                continuation.resume(throwing: DVError.badUrl)
+                return
+            }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = jsonBody
+            request.headers = headers
+            request.timeoutInterval = self.timout
+
+            session.request(request)
             .responseData { response in
                 guard let status = response.response?.statusCode else {
                     continuation.resume(throwing: DVError.badResponse)
